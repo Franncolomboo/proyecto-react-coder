@@ -1,8 +1,12 @@
-function App() {
+import NavBar  from "./components/NavBar" 
+import ItemListContainer from "./components/ItemListContainer"
 
+function App() {
+  const mensaje = "Bienvenidos a iSolutions";
   return (
     <div>
-      Soy la app
+        <NavBar />
+        <ItemListContainer greetings={mensaje} />
     </div>
   )
 }
