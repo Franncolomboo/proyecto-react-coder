@@ -1,0 +1,44 @@
+main{
+    flex-grow: 1;
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.slogan-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    font-family: Helvetica, sans-serif;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.875rem;
+}
+
+.brand-title{
+    font-size: 4rem;
+    font-weight: 700;
+    color: black;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+}
+
+.signature{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: black;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    margin-top: -0.625rem;
+}

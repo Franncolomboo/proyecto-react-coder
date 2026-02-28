@@ -1,17 +1,20 @@
 import NavBar  from "./components/NavBar" 
 import ItemListContainer from "./components/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer"
-import './style.scss'
-
+import Footer from "./components/Footer"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
-  const mensaje = "Bienvenidos a iSolutions";
   return (
-    <div>
+    <BrowserRouter>
         <NavBar />
-        <ItemListContainer greetings={mensaje} />
-        <ItemDetailContainer />
-    </div>
+        <Routes>
+            <Route path="/" element={<ItemListContainer/>} />
+            <Route path="/:idCategory" element={<ItemListContainer/>} />
+            <Route path="/:idItem" element={<ItemDetailContainer />} />
+        </Routes>
+        <Footer />
+    </BrowserRouter>
   )
 }
 

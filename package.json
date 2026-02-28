@@ -8,12 +8,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build-css": "sass ./src/style.scss ./src/css/style.css",
+    "build-css": "sass ./src/style.scss ./src/index.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
