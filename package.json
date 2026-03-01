@@ -12,6 +12,7 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "dependencies": {
+    "antd": "^6.3.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1"

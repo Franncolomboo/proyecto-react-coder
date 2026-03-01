@@ -2,6 +2,8 @@ main{
     flex-grow: 1;
 }
 
+// Home
+
 .content-container{
     display: flex;
     flex-direction: column;
@@ -41,4 +43,40 @@ main{
     font-family: Helvetica, sans-serif;
     margin: 0;
     margin-top: -0.625rem;
+}
+
+// Contacto
+
+.contact-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100% ;
+}
+
+.contacto-title{
+    font-size: 4rem;
+    font-weight: 700;
+    color: black;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+}
+
+//  FAQ
+
+.faq-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100% ;
+}
+
+.faq-title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: black;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
 }
