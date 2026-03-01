@@ -13,7 +13,7 @@ function NavBar(){
                     <li><NavLink className="nav-link" to="/preguntas-frecuentes">Preguntas frecuentes</NavLink></li>
                     <li><NavLink className="nav-link" to="/paquetes">Paquetes</NavLink></li>
                     <li><NavLink className="nav-link" to="/contacto">Contacto</NavLink></li>
-                    <li><a href=""><Carrito /></a></li>
+                    <li><a className="carrito-link" href=""><Carrito /></a></li>
                 </ul>
             </nav>
         </div>

@@ -45,7 +45,7 @@ function ItemListContainer() {
                 </div>
                 <div className="slogan-container">
                     <p>Transformo tus ideas en soluciones robustas y te doy la libertad para dominarlas</p>
-                    <Button className="ant-btn-home">Conoce mi propuesta</Button>
+                    <Button className="ant-btn">Conoce mi propuesta</Button>
                 </div>
                 </section>): idCategory==="sobre-mi"?(
                 <section className="about-content">
