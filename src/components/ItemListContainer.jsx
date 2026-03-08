@@ -82,14 +82,90 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                 ) : idCategory === "portfolio" ? (
                     <section className="portfolio-content">
                         <h2 className="port-title">Portfolio</h2>
-
+                        <div className="cards-content">
+                            <div className="card">
+                                <img src={img} alt="" />
+                                <div className="card-text">
+                                    <h3 className="card-title">Proyecto 1</h3>
+                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <img src={img} alt="" />
+                                <div className="card-text">
+                                    <h3 className="card-title">Proyecto 1</h3>
+                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <img src={img} alt="" />
+                                <div className="card-text">
+                                    <h3 className="card-title">Proyecto 1</h3>
+                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <img src={img} alt="" />
+                                <div className="card-text">
+                                    <h3 className="card-title">Proyecto 1</h3>
+                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <img src={img} alt="" />
+                                <div className="card-text">
+                                    <h3 className="card-title">Proyecto 1</h3>
+                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <img src={img} alt="" />
+                                <div className="card-text">
+                                    <h3 className="card-title">Proyecto 1</h3>
+                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                 ) : idCategory === "preguntas-frecuentes" ? (
                     <section className="faq-content">
                         <h2 className="faq-title">Preguntas Frecuentes</h2>
                         <Collapse className="faq-collapse" accordion items={faqs}></Collapse>
                     </section>
-                ) : null }
+                ): idCategory==="contacto"?(
+                <section className="contact-content">
+                    <h2 className="contacto-title">Contacto</h2>  
+                    <div className="form-container">
+                        <form className="contact-form" action="https://formspree.io/f/xkoqgeyo" method="POST">
+                            
+                            <label htmlFor="name">Ingrese su nombre completo:</label>
+                            <input type="text" id="name" name="name" required />
+                            
+                            <label htmlFor="email">Ingrese su correo electrónico:</label>
+                            <input type="email" id="email" name="email" required />
+                            
+                            <div className="package-options">
+                                <label htmlFor="paquete">Selecciona tu paquete:</label>
+                                <div className="package-group">
+                                    <input className="package-radio" type="radio" id="paquete-basico" name="paquete" value="basico" />
+                                    <label htmlFor="paquete-basico">Paquete Básico</label>
+                                </div>
+                                <div className="package-group">
+                                    <input className="package-radio" type="radio" id="paquete-estandar" name="paquete" value="estandar" />
+                                    <label htmlFor="paquete-estandar">Paquete Estándar</label>
+                                </div>
+                                <div className="package-group">
+                                    <input className="package-radio" type="radio" id="paquete-completo" name="paquete" value="completo" />
+                                    <label htmlFor="paquete-completo">Paquete Completo</label>
+                                </div>
+                            </div>
+                            <label htmlFor="message">Ingrese su mensaje: (opcional)</label>
+                            <textarea id="message" name="message" required></textarea>
+                            <Button className="sent-button" htmlType="submit">Enviar</Button>
+                        </form>
+                    </div>
+                </section>):
+                null }
             </div>
         </main>
     );

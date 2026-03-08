@@ -37,12 +37,13 @@ main{
     width: 100dvw;
 }
 
-.brand-title{
-    color: white;
-    font-size: 4rem;
-    font-weight: 700;
-    font-family: Helvetica, sans-serif;
-    margin: 0;
+.brand-titles{
+    @include title;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-size: 2rem;
+    
 }
 
 .signature{

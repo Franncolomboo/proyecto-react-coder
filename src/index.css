@@ -52,12 +52,16 @@ main {
   width: 100dvw;
 }
 
-.brand-title {
-  color: white;
-  font-size: 4rem;
+.brand-titles {
+  font-size: 3rem;
   font-weight: 700;
+  color: white;
   font-family: Helvetica, sans-serif;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-size: 2rem;
 }
 
 .signature {
@@ -216,9 +220,28 @@ main {
 }
 
 .footer-container {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(104, 103, 103);
   color: #000000;
   text-align: center;
+}
+
+.group-link {
+  display: flex;
+  flex-direction: row;
+}
+.group-link li {
+  list-style: none;
+}
+.group-link li a {
+  text-decoration: none;
+}
+
+.icon-linkedin {
+  font-size: 22px;
+}
+
+.icon-github {
+  width: 20px;
 }
 
 .nav-container {

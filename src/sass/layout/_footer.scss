@@ -1,5 +1,24 @@
 .footer-container{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(104, 103, 103);
     color: #000000;
     text-align: center;
+}
+
+.group-link{
+    display: flex;
+    flex-direction: row;
+    li{
+       list-style: none;
+       a{
+        text-decoration: none;
+       } 
+    }
+}
+
+.icon-linkedin{
+    font-size: 22px;
+}
+
+.icon-github{
+    width: 20px;
 }
