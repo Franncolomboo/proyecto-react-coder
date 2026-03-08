@@ -1,6 +1,25 @@
 .ant-collapse{
     width: 100%;
     max-width: 80%;
-    margin: 2.5rem;
+    margin-top: 2.5rem;
     font-size: 1.2rem;
+}
+
+.ant-collapse-item{
+    background-color: rgb(80, 79, 79);
+    border: 2px solid #F0F0F0;
+    color: #1A1A1A;
+}
+
+.ant-collapse-body{
+    background-color: #FAFAFA;
+    color: #595959;
+}
+
+.ant-collapse-expand-icon{
+    color :#1677FF;
+}
+
+.ant-collapse-title{
+    font-weight: 500;
 }

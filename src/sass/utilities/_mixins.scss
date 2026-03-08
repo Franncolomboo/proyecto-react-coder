@@ -1,0 +1,14 @@
+@mixin centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+}

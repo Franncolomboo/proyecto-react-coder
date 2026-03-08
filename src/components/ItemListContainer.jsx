@@ -1,12 +1,16 @@
+import { useRef } from "react"; // IMPORTANTE
 import { useParams } from "react-router-dom";
-import { Collapse} from "antd";
-import { DownloadOutlined } from '@ant-design/icons';
-import { Button, Divider, Flex, Radio } from 'antd';
+import { Collapse, Button } from "antd";
+import img from "../assets/img/card-relleno.avif";
+import me from "../assets/img/me-photo.avif";
 
 function ItemListContainer() {
-    const {idCategory} = useParams();
-    
-    console.log(idCategory);
+    const { idCategory } = useParams();
+    const sectionRef = useRef(null);
+
+    const scrollToContent = () => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     const faqs = [
         {
@@ -38,80 +42,55 @@ function ItemListContainer() {
 
     return (
         <main className="content-container">
-            {!idCategory ? (<section className="hero-content">
-                <div className="brand-titles">
-                    <h1 className="brand-title">iSolutions</h1>
-                    <p className="signature">Francisco Colombo</p>
-                </div>
-                <div className="slogan-container">
-                    <p>Transformo tus ideas en soluciones robustas y te doy la libertad para dominarlas</p>
-                    <Button className="ant-btn">Conoce mi propuesta</Button>
-                </div>
-                </section>): idCategory==="sobre-mi"?(
-                <section className="about-content">
-                    <h2>Sobre Mi</h2>
-                    <p>Learn more about our company and our mission.</p>
-                </section>
-                ): idCategory==="portfolio"?(
-                <section className="portfolio-content">
-                    <h2>Port Folio</h2>
-                    <p>Discover our portfolio of projects and case studies.</p>
-                </section>
-                ): idCategory==="preguntas-frecuentes"?(
-                <section className="faq-content">
-                    <div>
-                        <h2 className="faq-title">Preguntas Frecuentes</h2>
-                        <p>Find answers to common questions about our products and services.</p>
+            {!idCategory && (
+                <section className="hero-content">
+                    <div className="brand-titles">
+                        <h1 className="brand-title">iSolutions</h1>
+                        <p className="signature">Francisco Colombo</p>
                     </div>
-                    <Collapse className="faq-collapse" accordion items={faqs}></Collapse>               
+                    <div className="slogan-container">
+                        <p>Transformo tus ideas en soluciones robustas y te doy la libertad para dominarlas</p>
+                        <Button className="ant-btn" onClick={scrollToContent}>
+                            Conoce mi propuesta
+                        </Button>
+                    </div>
                 </section>
-                ): idCategory==="paquetes"?(
-                <section className="packages-content">
-                    <h2>Paquetes</h2>
-                    <p>Explore our range of packages and pricing options.</p>
-                </section>
-                ): idCategory==="contacto"?(
-                <section className="contact-content">
-                    <h2 className="contacto-title">Contacto</h2>   
-                    <div className="form-container">
-                        <form className="contact-form">
-                            <label htmlFor="name">Ingrese su nombre completo:</label>
-                            <input type="text" id="name" name="name" required />
-                            <label htmlFor="email">Ingrese su correo electrónico:</label>
-                            <input type="email" id="email" name="email" required />
+            )}
 
-                            <div className="package-options">
-                                <label htmlFor="paquete">Selecciona tu paquete:</label>
-                                
-                                <div className="package-group">
-                                    <input className="package-radio" type="radio" id="paquete-basico" name="paquete" value="basico" />
-                                    <label htmlFor="paquete-basico">Paquete Básico</label>
-                                </div>
-
-                                <div className="package-group">
-                                    <input className="package-radio" type="radio" id="paquete-estandar" name="paquete" value="estandar" />
-                                    <label htmlFor="paquete-estandar">Paquete Estándar</label>
-                                </div>
-
-                                <div className="package-group">
-                                    <input className="package-radio" type="radio" id="paquete-completo" name="paquete" value="completo" />
-                                    <label htmlFor="paquete-completo">Paquete Completo</label>
-                                </div>
+            <div ref={sectionRef} style={{ width: '100%' }}>
+                {!idCategory ? (
+                    <section className="about-content">
+                        <div className="about-container">
+                            <div className="about-image">
+                                <img src={me} alt="" />
                             </div>
+                            <div className="about-title-box">
+                                <h2 className="about-title">Conoceme</h2>
+                            </div>
+                            <div className="about-p-content">
+                                <p className="about-p">Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales, creando sitios web a medida que son rápidos, modernos y fáciles de usar. Mi formación académica me permite analizar cada proyecto desde la lógica y la eficiencia, adaptándome a lo que necesites: desde una landing page sencilla hasta plataformas más complejas.
 
-                            <label htmlFor="message">Ingrese su mensaje: (opcional)</label>
-                            <textarea id="message" name="message" required></textarea>
-                            <Button className="sent-button" type="submit">Enviar</Button>
-                        </form>
-                    </div>
-                </section>
-                ):(
-                <section className="not-found-content">
-                    <h2>404 - Página No Encontrada</h2> 
-                    <p>Lo sentimos, la página que estás buscando no existe.</p>
-                </section>
-                )
-            }
+Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar de forma transparente: escucho tu idea, analizamos juntos la mejor manera de llevarla a cabo y te mantengo al tanto de cada avance. Al estar formándome en Sistemas, no solo busco que tu web se vea bien hoy, sino que esté construida con una base sólida para que pueda crecer junto con tu proyecto.</p>
+                            </div>
+                        </div>
+                    </section>
+                ) : idCategory === "sobre-mi" ? (
+                    <section className="about-content">
+                        <h2 className="about-title">Sobre Mi</h2>
+                        <p className="about-p">Contenido detallado de Sobre Mi...</p>
+                    </section>
+                ) : idCategory === "portfolio" ? (
+                    <section className="portfolio-content">
+                        <h2 className="port-title">Portfolio</h2>
+
+                    </section>
+                ) : idCategory === "preguntas-frecuentes" ? (
+                    <section className="faq-content">
+                        <h2 className="faq-title">Preguntas Frecuentes</h2>
+                        <Collapse className="faq-collapse" accordion items={faqs}></Collapse>
+                    </section>
+                ) : null }
+            </div>
         </main>
     );
 }
