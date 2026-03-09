@@ -11,6 +11,7 @@
         "color":"#C96E28",
         "color-mid":"#D6A179",
         "colorPress":"#434242",
+        "color-end": "#FFFFFF",
         "gradient":"linear"
     },
     {
@@ -24,12 +25,13 @@
         "color":"#1C46DD",
         "color-mid":"#4172CC",
         "colorPress":"#434242",
+        "color-end": "#FFFFFF",
         "gradient":"linear"
     },
     {
         "id": "3",
         "title": "Completo",
-        "descripcion": "Ideal para profesionales que buscan su primera presencia digital sólida y rápida.",
+        "descripcion": "La opción definitiva para proyectos de alto impacto que requieren lógica personalizada y bases de datos.",
         "boton": "Agregar al carrito",
         "features":["Paquete Estandar + ",
         "E-commerce / Pagos: Carrito de compras.",
@@ -38,6 +40,7 @@
         "color":"#DD1C3F",
         "color-mid":"#D96778",
         "colorPress":"#434242",
+        "color-end": "#FFFFFF",
         "gradient":"linear"
     }
 ]

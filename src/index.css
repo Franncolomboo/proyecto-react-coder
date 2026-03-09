@@ -491,4 +491,111 @@ input:focus, textarea:focus {
   margin: 0;
 }
 
+/* Contenedor del Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-title {
+  text-align: center;
+}
+
+/* Estilo de la Tarjeta Individual con Degradado */
+.service-card {
+  border: none !important;
+  outline: none;
+  font-family: Golos, sans-serif;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto Hover para las Tarjetas */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.service-title {
+  font-family: Golos, sans-serif;
+  font-size: 1.7rem;
+  color: white; /* Títulos blancos para contraste */
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para la Lista de Características */
+.service-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 2rem;
+  flex-grow: 1; /* Para alinear botones */
+}
+
+.service-features li {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9); /* Texto blanco suave */
+  line-height: 1.4;
+}
+
+/* Icono de Check en blanco */
+.check-icon {
+  font-weight: bold;
+  color: white;
+}
+
+/* Resumen Aclaratorio en blanco suave */
+.service-summary {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Estilos para el Botón de Acción */
+.service-btn {
+  background-color: white; /* Botones blancos */
+  border-color: white !important;
+  color: #333 !important; /* Texto oscuro para contraste */
+  width: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.ant-btn.service-btn:hover {
+  background-color: #434242 !important;
+  color: white !important;
+  border-color: #434242 !important;
+}
+
+.ant-btn.service-btn:active {
+  background-color: #367bc1 !important;
+  color: white !important;
+  border-color: #383d42 !important;
+}
+
+/* Responsive para Móvil */
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* Una tarjeta debajo de otra */
+  }
+}
+
 /*# sourceMappingURL=index.css.map */

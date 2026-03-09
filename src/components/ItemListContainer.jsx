@@ -8,18 +8,23 @@ import css from "../assets/img/css-Logo.png"
 import js from "../assets/img/js-logo.webp"
 import sass from "../assets/img/sass-logo.png"
 import react from "../assets/img/React-Logo.png"
+import serviciosData from "../servicios.json";
+import { CheckOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ItemListContainer() {
     const { idCategory } = useParams();
     const sectionRef = useRef(null);
     const servicesRef = useRef(null);
+    const navigate = useNavigate();
 
     const scrollToContent = () => {
         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const scrollToContent2 = () => {
-        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const handleGoToServices = () => {
+        navigate("/servicios");
     };
 
     const faqs = [
@@ -81,7 +86,7 @@ function ItemListContainer() {
                                 <p className="about-p">Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales, creando sitios web a medida que son rápidos, modernos y fáciles de usar. Mi formación académica me permite analizar cada proyecto desde la lógica y la eficiencia, adaptándome a lo que necesites: desde una landing page sencilla hasta plataformas más complejas.
 
 Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar de forma transparente: escucho tu idea, analizamos juntos la mejor manera de llevarla a cabo y te mantengo al tanto de cada avance. Al estar formándome en Sistemas, no solo busco que tu web se vea bien hoy, sino que esté construida con una base sólida para que pueda crecer junto con tu proyecto.</p>
-                            <Button className="ant-btn2" onClick={scrollToContent2}>
+                            <Button className="ant-btn2" onClick={handleGoToServices}>
                                 Conoce mis servicios
                             </Button>
                             </div>
@@ -89,10 +94,53 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                     </section>
                     </>
                 ): idCategory === "servicios" ? (
-                    <section className="services-content">
-                        <div className="services-container">
-                            <h2 className="services-title">Servicios</h2>
-                            <p className="services-p">Contenido detallado de Servicios...</p>
+                    <section ref={servicesRef} className="services-content">
+                        <h2 className="services-title">Servicios</h2>
+                        <div className="services-grid">
+                            {serviciosData.map((servicio) => (
+                                <div 
+                                    key={servicio.id} 
+                                    className="service-card"
+                                    // *** AQUÍ ESTÁ LA MAGIA DEL DEGRADADO ***
+                                    // Aplicamos el fondo dinámicamente con estilos en línea
+                                    style={{ 
+                                        background: `linear-gradient(180deg, ${servicio.color} 0%, ${servicio["color-mid"]} 50% , ${servicio["color-end"]} 100%)`
+                                    }}
+                                >
+                                    {/* Cabecera con icono dinámico */}
+                                    <div className="card-header">
+                                        <h3 className="service-title">{servicio.title}</h3>
+                                    </div>
+
+                                    <p className="service-summary">
+                                        {servicio.descripcion}
+                                    </p>
+
+                                    <Button className="service-btn">
+                                        {servicio.boton}
+                                    </Button>
+
+                                    <div className="separator">
+
+                                    </div>
+
+                                    {/* Lista de características */}
+                                    <ul className="service-features">
+                                        {servicio.features.map((feature, index) => (
+                                            <li key={index}>
+                                                <CheckOutlined className="check-icon" />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* Resumen de para quién es mejor el paquete */}
+                                    
+
+                                    {/* Botón de acción */}
+                                    
+                                </div>
+                            ))}
                         </div>
                     </section>
                 ):idCategory === "portfolio" ? (
