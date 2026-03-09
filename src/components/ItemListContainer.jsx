@@ -12,8 +12,13 @@ import react from "../assets/img/React-Logo.png"
 function ItemListContainer() {
     const { idCategory } = useParams();
     const sectionRef = useRef(null);
+    const servicesRef = useRef(null);
 
     const scrollToContent = () => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToContent2 = () => {
         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
@@ -62,8 +67,8 @@ function ItemListContainer() {
                 </section>
             )}
 
-            <div ref={sectionRef} style={{ width: '100%' }}>
-                {!idCategory ? (
+            <div className="about-main-content" ref={sectionRef}>
+                {!idCategory ? (<>
                     <section className="about-content">
                         <div className="about-container">
                             <div className="about-image">
@@ -76,15 +81,21 @@ function ItemListContainer() {
                                 <p className="about-p">Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales, creando sitios web a medida que son rápidos, modernos y fáciles de usar. Mi formación académica me permite analizar cada proyecto desde la lógica y la eficiencia, adaptándome a lo que necesites: desde una landing page sencilla hasta plataformas más complejas.
 
 Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar de forma transparente: escucho tu idea, analizamos juntos la mejor manera de llevarla a cabo y te mantengo al tanto de cada avance. Al estar formándome en Sistemas, no solo busco que tu web se vea bien hoy, sino que esté construida con una base sólida para que pueda crecer junto con tu proyecto.</p>
+                            <Button className="ant-btn2" onClick={scrollToContent2}>
+                                Conoce mis servicios
+                            </Button>
                             </div>
                         </div>
                     </section>
-                ) : idCategory === "sobre-mi" ? (
-                    <section className="about-content">
-                        <h2 className="about-title">Sobre Mi</h2>
-                        <p className="about-p">Contenido detallado de Sobre Mi...</p>
+                    </>
+                ): idCategory === "servicios" ? (
+                    <section className="services-content">
+                        <div className="services-container">
+                            <h2 className="services-title">Servicios</h2>
+                            <p className="services-p">Contenido detallado de Servicios...</p>
+                        </div>
                     </section>
-                ) : idCategory === "portfolio" ? (
+                ):idCategory === "portfolio" ? (
                     <section className="portfolio-content">
                         <h2 className="port-title">Portfolio</h2>
                         <div className="cards-content">

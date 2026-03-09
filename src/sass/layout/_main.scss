@@ -55,6 +55,10 @@ main{
 }
 //  About
 
+.about-main-content{
+    width: 100%;
+}
+
 .about-content {
     display: flex;
     justify-content: center;
@@ -100,6 +104,9 @@ main{
 }
 
 .about-p-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     grid-area: texto;
     background-color: white;
     padding: 30px;
@@ -195,5 +202,15 @@ main{
 
 .ant-collapse-header{
     color: white;
+}
+
+// services
+.services-content{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.services-title{
+    @include title;
 }
 
