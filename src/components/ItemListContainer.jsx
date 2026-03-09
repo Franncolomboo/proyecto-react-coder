@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import { Collapse, Button } from "antd";
 import img from "../assets/img/card-relleno.avif";
 import me from "../assets/img/me-photo.avif";
+import html from "../assets/img/HTML5-Logo.png"
+import css from "../assets/img/css-Logo.png"
+import js from "../assets/img/js-logo.webp"
+import sass from "../assets/img/sass-logo.png"
+import react from "../assets/img/React-Logo.png"
 
 function ItemListContainer() {
     const { idCategory } = useParams();
