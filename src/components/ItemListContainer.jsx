@@ -12,12 +12,14 @@ import serviciosData from "../servicios.json";
 import { CheckOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 function ItemListContainer() {
     const { idCategory } = useParams();
     const sectionRef = useRef(null);
     const servicesRef = useRef(null);
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     const scrollToContent = () => {
         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -116,7 +118,7 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                                         {servicio.descripcion}
                                     </p>
 
-                                    <Button className="service-btn">
+                                    <Button className="service-btn" onClick={() => addToCart(servicio)}>
                                         {servicio.boton}
                                     </Button>
 
@@ -133,12 +135,6 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                                             </li>
                                         ))}
                                     </ul>
-
-                                    {/* Resumen de para quién es mejor el paquete */}
-                                    
-
-                                    {/* Botón de acción */}
-                                    
                                 </div>
                             ))}
                         </div>

@@ -5,10 +5,12 @@ import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Marquee from "react-fast-marquee"
 import { initializeApp } from "firebase/app"
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
         <NavBar />
         <Routes>
             <Route path="/" element={<ItemListContainer/>} />
@@ -16,7 +18,8 @@ function App() {
             <Route path="/:idItem" element={<ItemDetailContainer />} />
         </Routes>
         <Footer />
-    </BrowserRouter>
+      </BrowserRouter>
+    </CartProvider>
   )
 }
 

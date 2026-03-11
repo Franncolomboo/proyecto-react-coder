@@ -597,5 +597,30 @@ input:focus, textarea:focus {
     grid-template-columns: 1fr; /* Una tarjeta debajo de otra */
   }
 }
+.ant-btn.carrito-btn {
+  background: transparent !important;
+  border: none;
+  width: 40px !important;
+}
+.ant-btn.carrito-btn:hover {
+  background: transparent !important;
+  border: none;
+}
+
+.ant-badge {
+  border: none !important;
+}
+.ant-badge :hover {
+  border: none !important;
+}
+
+.cart-container {
+  padding: 16px;
+  width: 300px;
+}
+
+.texto-cart {
+  text-align: center;
+}
 
 /*# sourceMappingURL=index.css.map */

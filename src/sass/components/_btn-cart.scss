@@ -1,0 +1,25 @@
+.ant-btn.carrito-btn {
+    background: transparent !important;
+    border: none;
+    width: 40px !important;
+    &:hover {
+        background: transparent !important;
+        border: none;
+    }
+}
+
+.ant-badge{
+    border: none !important;
+    :hover{
+        border: none !important;
+    }
+}
+
+.cart-container {
+    padding: 16px;
+    width: 300px;
+}
+
+.texto-cart{
+    text-align: center;
+}
