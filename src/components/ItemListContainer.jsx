@@ -1,18 +1,14 @@
 import { useRef } from "react"; // IMPORTANTE
 import { useParams } from "react-router-dom";
 import { Collapse, Button } from "antd";
+import { PlusOutlined } from '@ant-design/icons';
 import img from "../assets/img/card-relleno.avif";
 import me from "../assets/img/me-photo.avif";
-import html from "../assets/img/HTML5-Logo.png"
-import css from "../assets/img/css-Logo.png"
-import js from "../assets/img/js-logo.webp"
-import sass from "../assets/img/sass-logo.png"
-import react from "../assets/img/React-Logo.png"
 import serviciosData from "../servicios.json";
 import { CheckOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+// import WorkProcess from "../components/WorkProcess";
 
 function ItemListContainer() {
     const { idCategory } = useParams();
@@ -103,13 +99,10 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                                 <div 
                                     key={servicio.id} 
                                     className="service-card"
-                                    // *** AQUÍ ESTÁ LA MAGIA DEL DEGRADADO ***
-                                    // Aplicamos el fondo dinámicamente con estilos en línea
                                     style={{ 
                                         background: `linear-gradient(180deg, ${servicio.color} 0%, ${servicio["color-mid"]} 50% , ${servicio["color-end"]} 100%)`
                                     }}
                                 >
-                                    {/* Cabecera con icono dinámico */}
                                     <div className="card-header">
                                         <h3 className="service-title">{servicio.title}</h3>
                                     </div>
@@ -126,7 +119,6 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
 
                                     </div>
 
-                                    {/* Lista de características */}
                                     <ul className="service-features">
                                         {servicio.features.map((feature, index) => (
                                             <li key={index}>
@@ -190,7 +182,7 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                 ) : idCategory === "preguntas-frecuentes" ? (
                     <section className="faq-content">
                         <h2 className="faq-title">Preguntas Frecuentes</h2>
-                        <Collapse className="faq-collapse" accordion items={faqs}></Collapse>
+                        <Collapse expandIconPosition="end" expandIcon={({ isActive }) => (<PlusOutlined rotate={isActive ? 90 : 0} style={{ fontSize: '16px', color: '#fff'}} />)} className="faq-collapse" accordion items={faqs}></Collapse>
                     </section>
                 ): idCategory==="contacto"?(
                 <section className="contact-content">

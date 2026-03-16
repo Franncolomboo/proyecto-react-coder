@@ -319,6 +319,39 @@ main {
   width: 30px;
 }
 
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  position: relative; /* Necesario para posicionar la línea */
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+/* Creamos la línea invisible al inicio */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Grosor de la "línea de carga" */
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff; /* Color de la línea */
+  /* Estado inicial: escala 0 (invisible) desde la izquierda */
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
+}
+
+/* El efecto al pasar el mouse */
+.nav-link:hover::after {
+  transform: scaleX(1); /* La línea se expande al 100% */
+}
+
+/* Opcional: un cambio de opacidad suave al texto */
+.nav-link:hover {
+  color: #ccc;
+}
+
 .form-container {
   padding: 1.25rem;
   display: flex;
@@ -621,6 +654,110 @@ input:focus, textarea:focus {
 
 .texto-cart {
   text-align: center;
+}
+
+.ant-collapse-item {
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  background: #0a0a0c; /* Fondo oscuro como tu captura */
+  width: 100%;
+}
+
+.stepWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.iconCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #666;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+/* Estado Activo (el que brilla azul) */
+.iconCircle.active {
+  background: linear-gradient(135deg, #3b82f6, #2dd4bf);
+  color: white;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  border: 2px solid #fff;
+}
+
+/* Punto verde de "estoy aquí" */
+.pulseDot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: #4ade80;
+  border-radius: 50%;
+  border: 2px solid #0a0a0c;
+}
+
+/* Línea conectora */
+.connectorLine {
+  flex-grow: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 -10px;
+  z-index: 1;
+}
+
+.progressFill {
+  height: 100%;
+  width: 50%; /* Esto lo puedes manejar dinámicamente */
+  background: linear-gradient(90deg, #3b82f6, #2dd4bf);
+}
+
+.progressFill.full {
+  width: 100%;
+}
+
+/* Textos */
+.info {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #888;
+}
+
+.title {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 5px;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=index.css.map */

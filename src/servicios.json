@@ -11,7 +11,7 @@
         "color":"#C96E28",
         "color-mid":"#D6A179",
         "colorPress":"#434242",
-        "color-end": "#FFFFFF",
+        "color-end": "#000000",
         "gradient":"linear"
     },
     {
@@ -25,7 +25,7 @@
         "color":"#1C46DD",
         "color-mid":"#4172CC",
         "colorPress":"#434242",
-        "color-end": "#FFFFFF",
+        "color-end": "#000000",
         "gradient":"linear"
     },
     {
@@ -40,7 +40,7 @@
         "color":"#DD1C3F",
         "color-mid":"#D96778",
         "colorPress":"#434242",
-        "color-end": "#FFFFFF",
+        "color-end": "#000000",
         "gradient":"linear"
     }
 ]
