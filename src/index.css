@@ -12,13 +12,22 @@
 }
 
 body {
-  background-image: url(/src/assets/img/hero.avif);
-  background-size: no-repeat;
+  background-image: url(/src/assets/img/gradient-1773691875311.svg);
+  background-size: cover;
+  font-family: "Inter", sans-serif;
   background-attachment: fixed;
 }
 
 main {
   flex-grow: 1;
+}
+
+.slogan {
+  font-size: 1rem;
+}
+.slogan .span-principal {
+  font-weight: 900;
+  color: orange;
 }
 
 .content-container {
@@ -36,10 +45,13 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Helvetica, sans-serif;
   font-size: 1.3rem;
   margin-top: 7rem;
   gap: 1.25rem;
+}
+.slogan-container .span-marca {
+  font-weight: bold;
+  color: white;
 }
 
 .hero-content {
@@ -56,19 +68,24 @@ main {
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  font-family: Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
   font-size: 2rem;
+  background: #EDDD53;
+  background: radial-gradient(circle, rgb(237, 221, 83) 0%, rgb(237, 219, 80) 41%, rgb(245, 158, 11) 99%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .signature {
   font-size: 1.5rem;
   font-weight: 400;
-  color: white;
-  font-family: Helvetica, sans-serif;
+  -webkit-text-fill-color: white;
   margin: 0;
   margin-top: -0.625rem;
 }
@@ -133,7 +150,7 @@ main {
   margin: 0;
   font-size: 2.5rem;
   color: #1a1a1a;
-  font-family: Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .about-p {
@@ -175,7 +192,7 @@ main {
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  font-family: Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
 }
 
@@ -201,7 +218,7 @@ main {
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  font-family: Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
 }
 
@@ -218,7 +235,7 @@ main {
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  font-family: Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
 }
 
@@ -235,7 +252,7 @@ main {
   font-size: 3rem;
   font-weight: 700;
   color: white;
-  font-family: Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
 }
 
@@ -308,7 +325,6 @@ main {
 .nav-link {
   color: #fff;
   text-decoration: none;
-  font-family: Helvetica, sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   border-radius: 0.625rem;
@@ -335,7 +351,8 @@ main {
   height: 2px; /* Grosor de la "línea de carga" */
   bottom: 0;
   left: 0;
-  background-color: #ffffff; /* Color de la línea */
+  background: #EDDD53;
+  background: linear-gradient(90deg, rgb(237, 221, 83) 0%, rgb(237, 219, 80) 41%, rgb(245, 158, 11) 99%);
   /* Estado inicial: escala 0 (invisible) desde la izquierda */
   transform: scaleX(0);
   transform-origin: bottom left;
@@ -355,6 +372,7 @@ main {
 .form-container {
   padding: 1.25rem;
   display: flex;
+  width: 500px;
   justify-content: center;
   background-color: #ffffff; /* Un gris casi blanco, muy corporativo */
   border-radius: 1.25rem;
@@ -389,6 +407,7 @@ main {
 /* Estilo para los cuadros de texto */
 input[type=text],
 input[type=email],
+select,
 textarea {
   width: 100%;
   padding: 0.75rem;
@@ -459,21 +478,33 @@ input:focus, textarea:focus {
   font-weight: 500;
 }
 
-.ant-btn {
-  background-color: #383d42;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.2rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-family: Helvetica, sans-serif;
-  width: 18.75rem;
-  height: 2.5rem;
+.button-home {
+  background: #EDDD53;
+  background: radial-gradient(circle, rgb(237, 221, 83) 0%, rgb(237, 219, 80) 41%, rgb(245, 158, 11) 99%);
+  min-width: auto;
+  max-width: 300px;
+  color: black;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: orange solid 2px;
+  border-radius: 10px;
+  padding: 5px 15px;
+  gap: 10px;
+}
+.button-home span {
+  align-self: center;
 }
 
-.ant-btn:hover {
-  transform: translateY(-2px);
+.button-home:hover {
+  transform: scale(1.02);
+  border: orange solid 2px;
+  box-shadow: none;
+}
+.button-home:hover .svg-arrow {
+  transform: translateX(5px);
+  transition: transform 0.3s ease;
 }
 
 .ant-btn2 {
@@ -659,6 +690,8 @@ input:focus, textarea:focus {
 .ant-collapse-item {
   justify-content: center;
   align-items: center;
+  background: #833AB4;
+  background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
 }
 
 .container {

@@ -3,7 +3,13 @@ main{
 }
 
 // Home
-
+.slogan{
+    font-size: 1rem;
+    .span-principal{
+        font-weight: 900;
+        color: orange;
+    }
+}
 
 
 .content-container{
@@ -20,12 +26,16 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-family: Helvetica, sans-serif;
+    justify-content: center;    
     font-size: 1.3rem;
     margin-top: 7rem;
     gap: 1.25rem;
+    .span-marca{
+        font-weight: bold;
+        color: white;
+    }
 }
+
 
 .hero-content {
     display: flex;
@@ -43,13 +53,24 @@ main{
     flex-direction: column;
     gap: 0.625rem;
     font-size: 2rem;
+
+
+    background: #EDDD53;
+    background: radial-gradient(circle, rgba(237, 221, 83, 1) 0%, rgba(237, 219, 80, 1) 41%, rgba(245, 158, 11, 1) 99%);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    
 }
 
 .signature{
     font-size: 1.5rem;
     font-weight: 400;
-    color: white;
-    font-family: Helvetica, sans-serif;
+    -webkit-text-fill-color: white;
     margin: 0;
     margin-top: -0.625rem;
 }
@@ -117,7 +138,7 @@ main{
     margin: 0;
     font-size: 2.5rem;
     color: #1a1a1a;
-    font-family: Helvetica, sans-serif;
+    font-family: $fuente;
 }
 
 .about-p {

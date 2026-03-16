@@ -1,19 +1,32 @@
-.ant-btn{
-    background-color: #383d42;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: Helvetica, sans-serif; 
-    width: 18.75rem;
-    height: 2.5rem;
+.button-home{
+    background: #EDDD53;
+    background: radial-gradient(circle, rgba(237, 221, 83, 1) 0%, rgba(237, 219, 80, 1) 41%, rgba(245, 158, 11, 1) 99%);
+    min-width: auto;
+    max-width: 300px;  
+    color: black;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: orange solid 2px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    gap: 10px;
+    span{
+        align-self: center;
+    }
 }
 
-.ant-btn:hover{
-    transform: translateY(-2px);
+.button-home:hover{
+    transform: scale(1.02);
+    border: orange solid 2px;
+    box-shadow: none;
+    .svg-arrow{
+        transform: translateX(5px);
+        transition: transform 0.3s ease;
+    }
 }
+
 
 .ant-btn2{
     margin-top: 2.5rem;

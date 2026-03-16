@@ -1,6 +1,7 @@
 .form-container {
     padding: 1.25rem;
     display: flex;
+    width: 500px;
     justify-content: center;
     background-color: #ffffff; /* Un gris casi blanco, muy corporativo */
     border-radius: 1.25rem;
@@ -35,6 +36,7 @@
 /* Estilo para los cuadros de texto */
 input[type="text"], 
 input[type="email"], 
+select,
 textarea {
     width: 100%;
     padding: 0.75rem;
