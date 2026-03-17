@@ -19,8 +19,6 @@ function ItemListContainer() {
 
     const [current, setCurrent] = useState(0);
 
-
-
     const onChange = (value) => {
         setCurrent(value);
     };
@@ -315,7 +313,8 @@ function ItemListContainer() {
                     <section className="contact-content">
                         <h2 className="contacto-title">Contacto</h2>  
                         <div className="form-container">
-                            <form className="contact-form" action="https://formspree.io/f/xkoqgeyo" method="POST">
+                            <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                                <input type="hidden" name="access_key" value="8380fa1f-59e2-4cdc-b5ea-e7dc4c5274cf"></input>
                                 <label htmlFor="name">Ingrese su nombre completo:</label>
                                 <input type="text" id="name" name="name" required />
                                 <label htmlFor="email">Ingrese su correo electrónico:</label>

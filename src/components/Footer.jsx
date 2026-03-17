@@ -28,7 +28,7 @@ function Footer() {
                             <MailOutlined className='icon'/>
                             <div className='footer-info'>
                                 <span className='description-info'>Email</span>
-                                <li><p>iSolutions@gmail.com</p></li>
+                                <li><p>FC.Solutions@gmail.com</p></li>
                             </div>
                         </div>
                         <div className="group-link">
