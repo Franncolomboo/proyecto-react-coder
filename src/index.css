@@ -256,6 +256,10 @@ main {
   margin: 0;
 }
 
+.proceso-content {
+  height: 100vh;
+}
+
 .footer-container {
   background-color: rgb(104, 103, 103);
   display: flex;
@@ -395,7 +399,7 @@ main {
   display: flex;
   width: 500px;
   justify-content: center;
-  background-color: #ffffff; /* Un gris casi blanco, muy corporativo */
+  background-color: #ffffff;
   border-radius: 1.25rem;
   margin: 30px;
 }
@@ -403,11 +407,10 @@ main {
 .contact-form {
   display: flex;
   flex-direction: column;
-  /* Quitamos el fondo rojo por uno transparente o blanco sólido */
   background-color: #ffffff;
   padding: 2.5rem;
   width: 100%;
-  max-width: 500px; /* Un poco más angosto se ve más elegante */
+  max-width: 500px;
   border-radius: 4px;
   gap: 1.5rem;
 }
@@ -415,17 +418,15 @@ main {
   resize: none;
 }
 
-/* Estilo para los textos de etiqueta (labels) */
 .contact-form label {
   font-family: "Inter", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: #444;
-  align-self: flex-start; /* Alineado a la izquierda para mejor lectura */
+  align-self: flex-start;
   margin-bottom: -0.5rem;
 }
 
-/* Estilo para los cuadros de texto */
 input[type=text],
 input[type=email],
 select,
@@ -440,20 +441,27 @@ textarea {
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: #000; /* Resalta al hacer click */
+  border-color: #000;
 }
 
 .package-group {
   display: flex;
-  flex-direction: row; /* Cambiamos a columna para orden */
+  flex-direction: row;
   align-items: flex-start;
   gap: 0.8rem;
   width: 100%;
   margin: 1rem 0;
 }
 
+.package-group-2 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .sent-button {
-  background-color: #111; /* Negro profundo */
+  background-color: #111;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -462,15 +470,15 @@ input:focus, textarea:focus {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  width: 100%; /* Botón ancho para impacto visual moderno */
-  border-radius: 50px; /* Bordes redondeados para un toque moderno */
+  width: 100%;
+  border-radius: 50px;
   transition: all 0.3s ease;
   align-self: center;
 }
 
 .sent-button:hover {
   background-color: #333;
-  transform: translateY(-2px); /* Pequeña animación de elevación */
+  transform: translateY(-2px);
 }
 
 .ant-collapse {
@@ -801,6 +809,7 @@ input:focus, textarea:focus {
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
+  margin: 20px;
 }
 
 /* --- REESTRUCTURACIÓN DE STEPS (ANT DESIGN) --- */
@@ -810,7 +819,6 @@ input:focus, textarea:focus {
   width: 70px !important;
   height: 70px !important;
   line-height: 70px !important;
-  margin-bottom: 15px !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -839,14 +847,14 @@ input:focus, textarea:focus {
   border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 2;
   position: relative;
+  overflow: visible;
 }
 
-/* Estado ACTIVO y COMPLETADO (Azul + Glow) */
 .ant-steps-item-process .icon2,
 .ant-steps-item-finish .icon2 {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  background: linear-gradient(135deg, yellowgreen 0%, yellowgreen 100%) !important;
   color: white !important;
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 25px rgba(153, 205, 50, 0.379);
   border: none;
 }
 
@@ -871,35 +879,33 @@ input:focus, textarea:focus {
     opacity: 0;
   }
 }
-/* --- LA LÍNEA DE PROGRESO (EL "TAIL") --- */
 .ant-steps-item-rail {
-  /* top: 35px es la mitad exacta de los 70px del contenedor del icono */
-  top: 35px !important;
-  padding: 0 !important;
-  /* El margen izquierdo hace que la línea empiece desde el centro del icono */
-  margin-left: 35px !important;
+  position: relative;
+  height: 5px !important;
+  border-radius: 10px !important;
+  z-index: 1;
+  margin-left: 10px !important;
+  margin-top: 35px !important; /* Ajusta según el tamaño de tu icono */
 }
 
 .ant-steps-item-rail::after {
   background: rgba(255, 255, 255, 0.1) !important;
-  height: 3px !important;
+  height: 5px !important;
   border-radius: 10px;
   width: 100% !important;
   transition: background 0.3s;
 }
 
 /* --- ANIMACIÓN DE CARGA GRADUAL --- */
-.ant-steps-item-process .ant-steps-rail::after {
-  background: linear-gradient(90deg, #3b82f6 50%, rgba(255, 255, 255, 0.1) 50%) !important;
+.ant-steps-item-process .ant-steps-item-rail::after {
+  background: linear-gradient(90deg, yellowgreen 50%, rgba(230, 17, 17, 0.1) 50%) !important;
   background-size: 200% 100% !important;
   background-position: 100% 0 !important;
-  /* Usamos 'linear' para que el llenado sea constante y no a saltos */
   animation: loadingProgress 8s linear forwards !important;
 }
 
-/* Pasos ya terminados se quedan azules sólidos */
 .ant-steps-item-finish .ant-steps-item-rail::after {
-  background: #3b82f6 !important;
+  background: yellowgreen !important;
 }
 
 @keyframes loadingProgress {
@@ -910,13 +916,12 @@ input:focus, textarea:focus {
     background-position: 0% 0;
   }
 }
-/* --- CAJA DE TEXTO DESCRIPTIVO (ABAJO) --- */
 .step-context-box {
   margin-top: 50px;
   padding: 30px;
   background: rgba(59, 130, 246, 0.05);
   border-radius: 20px;
-  border-left: 5px solid #3b82f6;
+  border-left: 5px solid yellowgreen;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -942,6 +947,7 @@ input:focus, textarea:focus {
   font-size: 1.1rem !important;
   line-height: 1.6;
   font-weight: 400;
+  max-height: 100vh;
 }
 
 /* --- RESPONSIVE --- */
@@ -957,10 +963,6 @@ input:focus, textarea:focus {
   .proceso-container .ant-steps-item-icon {
     width: 55px !important;
     height: 55px !important;
-  }
-  .proceso-container .ant-steps-rail {
-    top: 27px !important; /* Ajuste para versión móvil */
-    margin-left: 27px !important;
   }
 }
 

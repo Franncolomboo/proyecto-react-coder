@@ -1,7 +1,7 @@
 import { useState, useRef ,useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Collapse, Button, Steps, Typography } from "antd";
-import { PlusOutlined, CheckOutlined, SolutionOutlined, RocketOutlined, SmileOutlined } from '@ant-design/icons';
+import { PlusOutlined, CheckOutlined, ClockCircleOutlined} from '@ant-design/icons';
 import img from "../assets/img/card-relleno.avif";
 import me from "../assets/img/me-photo.avif";
 import serviciosData from "../servicios.json";
@@ -12,6 +12,7 @@ const { Text } = Typography;
 function ItemListContainer() {
     const { idCategory } = useParams();
     const sectionRef = useRef(null);
+    const MetodologiaRef = useRef(null);
     const servicesRef = useRef(null);
     const navigate = useNavigate();
     const { addToCart } = useCart();
@@ -26,34 +27,87 @@ function ItemListContainer() {
 
     const pasosProceso = [
         {
-            title: 'Briefing',
-            content: 'Analizamos tus necesidades y definimos los objetivos del proyecto.',
+            title: 'Estrategia & Research',
+            time: '1-2 semanas',
+            content: 'Definimos una base clara para el proyecto. Alineamos objetivos de negocio, alcance y prioridades para reducir riesgos y tomar decisiones con criterio desde el inicio.',
+            entregables: [
+            'Brief estratégico con objetivos claros',
+            'Análisis de contexto y referencias',
+            'Definición de público objetivo',
+            'Arquitectura de información inicial'
+            ],
+            validacion:'Reunión de alineación para validar enfoque, alcance y próximos pasos',
             icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-target-arrow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 7a5 5 0 1 0 5 5" /><path d="M13 3.055a9 9 0 1 0 7.941 7.945" /><path d="M15 6v3h3l3 -3h-3v-3l-3 3" /><path d="M15 9l-3 3" /></svg>
         },
         {
-            title: 'Desarrollo',
-            content: 'Transformo las ideas en código limpio, escalable y optimizado.',
+            title: 'Diseño & Prototipado',
+            time: '2-3 semanas',
+            content: 'Diseñamos la experiencia y la interfaz del producto priorizando claridad, consistencia y usabilidad, asegurando una base sólida antes de pasar a desarrollo.',
+            entregables: [
+            'Prototipo navegable de alta fidelidad',
+            'Sistema de diseño (UI Kit)',
+            'Assets exportables para desarrollo'
+            ],
+        validacion: 'Feedback de diseño y aprobación de prototipos finales.',
             icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-palette"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /><path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
         },
         {
-            title: 'Entrega',
-            content: 'Lanzamiento del proyecto y soporte para asegurar el éxito total.',
+            title: 'Desarrollo & Testing',
+            time: '3-4 semanas',
+            content: 'Implementamos el producto con foco en calidad técnica, performance y escalabilidad, asegurando una base mantenible preparada para evolucionar.',
+            entregables: [
+            'Frontend desarrollado con React',
+            'Integración de APIs, formularios y funcionalidades clave',
+            'Optimización de performance y buenas prácticas técnicas',
+            'Testing funcional y validación cross-device'
+            ],
+            validacion: 'Demo funcional del producto listo para ajustes finales',
             icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-code"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></svg>
         },
         {
-            title: 'Entrega',
-            content: 'Bla bla bla bla',
+            title: 'Lanzamiento & Ajustes',
+            time: '1 semana',
+            content: 'Publicamos el producto en un entorno productivo estable y realizamos ajustes finales para asegurar una entrega profesional y confiable.',
+            entregables: [
+                'Deploy a producción y configuración inicial',
+                'Checklist de calidad post-lanzamiento',
+                'Documentación técnica básica para mantenimiento',
+                'Soporte inicial para ajustes y correcciones'
+            ],
+            validacion: 'Confirmación de estabilidad en producción y cierre de etapa de ajustes iniciales.',
             icon: <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 lucide-rocket-icon lucide-rocket"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
         }
     ];
 
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-    //         setCurrent((prev) => (prev === pasosProceso.length - 1 ? 0 : prev + 1));
-    //     }, 22000); // Sincronizado con CSS
+    const [isVisible, setIsVisible] = useState(false);
 
-    //     return () => clearInterval(timer);
-    // }, [pasosProceso.length]);
+    useEffect(() => {
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            // Si el elemento entra en pantalla, activamos la visibilidad
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+            }
+        },
+        { threshold: 0.3 } // Se activa cuando el 30% de la sección es visible
+    );
+
+    if (MetodologiaRef.current) {
+        observer.observe(MetodologiaRef.current);
+    }
+
+    return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
+        const timer = setInterval(() => {
+            setCurrent((prev) => (prev === pasosProceso.length - 1 ? 0 : prev + 1));
+        }, 15000); 
+
+        return () => clearInterval(timer);
+    }, [isVisible, pasosProceso.length]);
 
     const scrollToContent = () => {
         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -61,6 +115,10 @@ function ItemListContainer() {
 
     const handleGoToServices = () => {
         navigate("/servicios");
+    };
+
+    const handleGoToMetodologia = () => {
+        MetodologiaRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const faqs = [
@@ -110,6 +168,7 @@ function ItemListContainer() {
             )}
             <div className="about-main-content" ref={sectionRef}>
                 {!idCategory ? (
+                    <>
                     <section className="about-content">
                         <div className="about-container">
                             <div className="about-image">
@@ -119,13 +178,83 @@ function ItemListContainer() {
                                 <h2 className="about-title">Conoceme</h2>
                             </div>
                             <div className="about-p-content">
-                                <p className="about-p">Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales, creando sitios web a medida que son rápidos, modernos y fáciles de usar. Mi prioridad es que te sientas acompañado en todo el proceso.</p>
-                                <Button className="ant-btn2" onClick={handleGoToServices}>
-                                    Conoce mis servicios
+                                <p className="about-p">¡Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales mediante el desarrollo de sitios web de alto impacto. Mi enfoque combina diseño moderno, performance optimizada y una arquitectura escalable. Mi prioridad es que te sientas acompañado en cada etapa del desarrollo, garantizando que tengas total control sobre un producto final diseñado para potenciar tu negocio.</p>
+                                <Button className="ant-btn2" onClick={handleGoToMetodologia}>
+                                    Conoce mi metodología
                                 </Button>
                             </div>
                         </div>
                     </section>
+                    <section className="proceso-content" ref={MetodologiaRef}>
+                        <div className="proceso-container">
+                                <h2 className="services-title">Metodología</h2>
+                                <Steps 
+                                    key={current}
+                                    current={current} 
+                                    onChange={onChange}
+                                    labelPlacement="vertical"
+                                    items={pasosProceso.map(item => ({
+                                        icon: item.icon,
+                                        description: (
+                                            <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '12px', marginTop: '5px' }}>
+                                                <ClockCircleOutlined style={{ marginRight: '5px' }} />
+                                                {item.time}
+                                            </div>
+                                        ),
+                                        title: item.title,
+                                    }))}
+                                />
+                                <div className="step-context-box" style={{ display: 'block', textAlign: 'left', width: '100%', maxWidth: '1000px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                        
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                            <div style={{ transform: 'scale(0.8)' }}>{pasosProceso[current].icon}</div>
+                                            <div>
+                                                <span style={{ color: '#3b82f6', fontWeight: 'bold', fontSize: '14px' }}>0{current + 1}</span>
+                                                <span style={{ background: 'rgba(255,255,255,0.1)', padding: '2px 8px', borderRadius: '10px', fontSize: '12px', marginLeft: '10px', color: '#cbd5e1' }}>
+                                                    {pasosProceso[current].time}
+                                                </span>
+                                                <h3 style={{ color: '#fff', fontSize: '24px', margin: '5px 0' }}>{pasosProceso[current].title}</h3>
+                                            </div>
+                                        </div>
+
+                                        <p style={{ color: '#94a3b8', fontSize: '16px', lineHeight: '1.6' }}>
+                                            {pasosProceso[current].content}
+                                        </p>
+
+                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '10px' }}>
+                                            
+
+                                            <div>
+                                                <h4 style={{ color: 'yellowgreen', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '15px' }}>
+                                                    <CheckOutlined style={{ fontSize: '14px' }} /> Entregables
+                                                </h4>
+                                                <ul style={{ listStyle: 'none', padding: 0, color: '#94a3b8' }}>
+                                                    {pasosProceso[current].entregables ? pasosProceso[current].entregables.map((item, i) => (
+                                                        <li key={i} style={{ marginBottom: '8px', fontSize: '14px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                                                            <span style={{ color: '#3b82f6' }}>•</span> {item}
+                                                        </li>
+                                                    )) : null}
+                                                </ul>
+                                            </div>
+
+                                            {pasosProceso[current].validacion ? (
+                                                <div style={{ background: 'rgba(59, 130, 246, 0.05)', padding: '20px', borderRadius: '16px', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
+                                                    <h4 style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                                                        Punto de Validación
+                                                    </h4>
+                                                    <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                                                        {pasosProceso[current].validacion}
+                                                    </p>
+                                                </div>
+                                            ) : null}
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </section>
+                </>
+                
                 ) : idCategory === "servicios" ? (
                     <section ref={servicesRef} className="services-content">
                         <h2 className="services-title">Servicios</h2>
@@ -159,23 +288,6 @@ function ItemListContainer() {
                             ))}
                         </div>
                         
-                        <div className="proceso-container">
-                            <h2 className="services-title">Mi Proceso</h2>
-                            <Steps 
-                                key={current}
-                                current={current} 
-                                onChange={onChange}
-                                items={pasosProceso.map(item => ({
-                                    title: item.title,
-                                    icon: item.icon
-                                }))}
-                            />
-                            <div className="step-context-box">
-                                <Text className="step-description-text">
-                                    {pasosProceso[current].content}
-                                </Text>
-                            </div>
-                        </div>
 
 
                     </section>
@@ -221,6 +333,17 @@ function ItemListContainer() {
                                     <div className="package-group">
                                         <input className="package-radio" type="radio" id="paquete-completo" name="paquete" value="completo" />
                                         <label htmlFor="paquete-completo">Paquete Completo</label>
+                                    </div>
+                                    <div className="package-group-2">
+                                        <label htmlFor="presupuesto">Selecciona tu presupuesto (opcional)</label>
+                                        <select name="" id="">
+                                            <option value="">Seleccione su presupuesto</option>
+                                            <option value="">U$S 300</option>
+                                            <option value="">U$S 500</option>
+                                            <option value="">U$S 700</option>
+                                            <option value="">U$S 1000</option>
+                                            <option value="">U$S 1000 - U$S 1500</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <label htmlFor="message">Ingrese su mensaje: (opcional)</label>

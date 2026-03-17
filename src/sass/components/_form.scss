@@ -3,7 +3,7 @@
     display: flex;
     width: 500px;
     justify-content: center;
-    background-color: #ffffff; /* Un gris casi blanco, muy corporativo */
+    background-color: #ffffff; 
     border-radius: 1.25rem;
     margin: 30px;
 }
@@ -11,11 +11,10 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    /* Quitamos el fondo rojo por uno transparente o blanco sólido */
     background-color: #ffffff; 
     padding: 2.5rem;
     width: 100%;
-    max-width: 500px; /* Un poco más angosto se ve más elegante */
+    max-width: 500px; 
     border-radius: 4px;
     gap: 1.5rem;
     textarea{
@@ -23,17 +22,15 @@
     }
 }
 
-/* Estilo para los textos de etiqueta (labels) */
 .contact-form label {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     color: #444;
-    align-self: flex-start; /* Alineado a la izquierda para mejor lectura */
+    align-self: flex-start; 
     margin-bottom: -0.5rem;
 }
 
-/* Estilo para los cuadros de texto */
 input[type="text"], 
 input[type="email"], 
 select,
@@ -48,20 +45,27 @@ textarea {
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #000; /* Resalta al hacer click */
+    border-color: #000; 
 }
 
 .package-group {
     display: flex;
-    flex-direction: row; /* Cambiamos a columna para orden */
+    flex-direction: row;
     align-items: flex-start;
     gap: 0.8rem;
     width: 100%;
     margin: 1rem 0;
 }
 
+.package-group-2{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .sent-button {
-    background-color: #111; /* Negro profundo */
+    background-color: #111; 
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -70,13 +74,13 @@ input:focus, textarea:focus {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    width: 100%; /* Botón ancho para impacto visual moderno */
-    border-radius: 50px; /* Bordes redondeados para un toque moderno */
+    width: 100%; 
+    border-radius: 50px; 
     transition: all 0.3s ease;
     align-self: center;
 }
 
 .sent-button:hover {
     background-color: #333;
-    transform: translateY(-2px); /* Pequeña animación de elevación */
+    transform: translateY(-2px);
 }
