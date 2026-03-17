@@ -23,6 +23,23 @@ function ItemListContainer() {
         setCurrent(value);
     };
 
+    const handleGoToMetodologia = (e) => {
+        if (e) e.preventDefault(); // Por si lo llamas desde un <a>
+
+        if (idCategory) {
+            // 1. Si NO estás en la home, primero navega a la home
+            navigate("/");
+            // 2. Usamos un pequeño delay para esperar que la home cargue y la ref exista
+            setTimeout(() => {
+                const element = document.getElementById("metodologia-section");
+                element?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
+            // Si YA estás en la home, solo hace el scroll
+            MetodologiaRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     const pasosProceso = [
         {
             title: 'Estrategia & Research',
@@ -115,20 +132,23 @@ function ItemListContainer() {
         navigate("/servicios");
     };
 
-    const handleGoToMetodologia = () => {
-        MetodologiaRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
-
     const faqs = [
         {
             key: "1",
             label: "¿Cuáles son los servicios que ofreces?",
-            children: "Ofrezco una amplia gama de servicios de desarrollo web, incluyendo diseño de sitios web, desarrollo de aplicaciones web, optimización SEO y mantenimiento continuo."
+            children: "Ofrezco una amplia gama de servicios de desarrollo web, incluyendo diseño de sitios web, rediseños de sitios web, desarrollo de aplicaciones web, optimización SEO y mantenimiento."
         },
         {
             key: "2",
             label: "¿Cuál es tu proceso de trabajo?",
-            children: "Mi proceso de trabajo se basa en la colaboración estrecha con mis clientes. Comenzamos con una consulta para entender sus necesidades, luego desarrollo un plan personalizado y finalmente implemento la solución mientras mantengo una comunicación constante."
+            children: (
+                <p>
+                    Mi proceso de trabajo se basa en la colaboración estrecha con mis clientes. 
+                    Podés revisar mi <a href="#metodologia-section" onClick={handleGoToMetodologia} className="faq-link-anchor">modalidad de trabajo</a>. 
+                    Comenzamos con una consulta para entender sus necesidades, luego desarrollo 
+                    un plan personalizado y finalmente implemento la solución.
+                </p>
+            )
         },
         {
             key: "3",
@@ -138,11 +158,11 @@ function ItemListContainer() {
         {
             key: "4",
             label: "¿Ofreces soporte después de la entrega del proyecto?",
-            children: "Sí, ofrezco soporte continuo después de la entrega del proyecto para asegurarme de que todo funcione correctamente y para realizar cualquier ajuste necesario. Mi objetivo es garantizar la satisfacción total de mis clientes."
+            children: "Sí, ofrezco soporte después de la entrega del proyecto, es otro de mis servicios , lo ofrezco para asegurarme de que todo funcione correctamente y para realizar cualquier ajuste necesario. Mi objetivo es garantizar la satisfacción total de mis clientes."
         },
         {
             key: "5",
-            label: "¿Cuáles son tus tarifas?",
+            label: "¿Cuáles son tus costos?",
             children: "Mis tarifas varían según el tipo de proyecto y su complejidad. Ofrezco paquetes personalizados para adaptarme a las necesidades específicas de cada cliente. No dudes en contactarme para obtener una cotización detallada."
         }
     ];
@@ -183,9 +203,9 @@ function ItemListContainer() {
                             </div>
                         </div>
                     </section>
-                    <section className="proceso-content" ref={MetodologiaRef}>
+                    <section className="proceso-content" ref={MetodologiaRef} id="metodologia-section">
                         <div className="proceso-container">
-                                <h2 className="services-title">Metodología</h2>
+                                <h2 className="services-title" >Metodología</h2>
                                 <Steps 
                                     key={current}
                                     current={current} 
@@ -320,7 +340,7 @@ function ItemListContainer() {
                                 <label htmlFor="email">Ingrese su correo electrónico:</label>
                                 <input type="email" id="email" name="email" required />
                                 <div className="package-options">
-                                    <label htmlFor="paquete">Selecciona tu paquete:</label>
+                                    <label htmlFor="paquete">Selecciona tu paquete: (opcional)</label>
                                     <div className="package-group">
                                         <input className="package-radio" type="radio" id="paquete-basico" name="paquete" value="basico" />
                                         <label htmlFor="paquete-basico">Paquete Básico</label>
@@ -346,7 +366,7 @@ function ItemListContainer() {
                                     </div>
                                 </div>
                                 <label htmlFor="message">Ingrese su mensaje: (opcional)</label>
-                                <textarea id="message" name="message" required></textarea>
+                                <textarea id="message" name="message"></textarea>
                                 <Button className="sent-button" htmlType="submit">Enviar</Button>
                             </form>
                         </div>
