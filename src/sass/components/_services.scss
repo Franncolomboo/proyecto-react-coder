@@ -1,4 +1,6 @@
-
+.services-title{
+    text-align: center;
+}
 
 /* Contenedor del Grid */
 .services-grid {
@@ -11,11 +13,27 @@
     margin: 0 auto;
 }
 
-.services-title{
-    text-align: center;
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Viene desde más abajo */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Estilo de la Tarjeta Individual con Degradado */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .service-card {
     border: none !important;
     outline: none;
@@ -27,13 +45,24 @@
     flex-direction: column;
     gap: 1.5rem;
     justify-content: space-between; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    /* --- CAMBIOS PARA LA CASCADA --- */
+    opacity: 0; /* Empiezan invisibles */
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    
+    /* Usamos la variable --i que pasamos desde React */
+    /* El delay se calcula automáticamente para cada tarjeta */
+    animation-delay: calc(var(--i) * 0.15s); 
+
+    /* La transición DEBE incluir transform para que el hover sea suave */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
 
-/* Efecto Hover para las Tarjetas */
+/* Efecto Hover */
 .service-card:hover {
-    transform: translateY(-10px);
+    /* Mantenemos el translateY negativo para el hover */
+    transform: translateY(-10px) !important; 
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 

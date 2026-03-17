@@ -1,6 +1,7 @@
 .button-home{
-    background: #EDDD53;
-    background: radial-gradient(circle, rgba(237, 221, 83, 1) 0%, rgba(237, 219, 80, 1) 41%, rgba(245, 158, 11, 1) 99%);
+    position:relative;
+    background: #70E000;
+    background: radial-gradient(circle, rgba(112, 224, 0, 1) 0%, rgba(158, 240, 26, 1) 52%, rgba(204, 255, 51, 1) 100%);
     min-width: auto;
     max-width: 300px;  
     color: black;
@@ -8,18 +9,39 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    border: orange solid 2px;
+    border: greenyellow solid 2px;
     border-radius: 10px;
     padding: 5px 15px;
     gap: 10px;
+    outline: none;
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
     span{
         align-self: center;
     }
+    .svg-arrow{
+        transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+}
+
+.button-home::before{
+    content:"";
+    background: linear-gradient(247deg,rgba(158, 240, 26, 1) 0%, rgba(233, 255, 173, 1) 53%, rgba(204, 255, 51, 1) 100%);
+    position: absolute;
+    top:-2px;
+    left:-2px;
+    background-size: 600%;
+    z-index:-1;
+    width:calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    transition: opacity .3s ease-in-out;
+    opacity:1;
+    animation: glowing 20s linear infinite;
 }
 
 .button-home:hover{
-    transform: scale(1.02);
-    border: orange solid 2px;
+    border: greenyellow solid 2px;
+    transform: scale(1.05);
     box-shadow: none;
     .svg-arrow{
         transform: translateX(5px);

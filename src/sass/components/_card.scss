@@ -1,10 +1,14 @@
 .card{
-    background-color: rgb(98, 98, 99);
+    background: linear-gradient(180deg,rgba(204, 255, 51, 1) 0%, rgba(183, 227, 50, 1) 52%, rgba(2, 3, 0, 1) 100%);
     width: 400px;
     height: 400px;
+    border-radius: 15px;
+    overflow:hidden;
     img{
         width: 100%;
         object-fit: cover;
+        -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     }
     a{
         text-decoration: none;

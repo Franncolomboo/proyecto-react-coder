@@ -7,7 +7,7 @@ main{
     font-size: 1rem;
     .span-principal{
         font-weight: 900;
-        color: orange;
+        color: greenyellow;
     }
 }
 
@@ -54,17 +54,14 @@ main{
     gap: 0.625rem;
     font-size: 2rem;
 
-
-    background: #EDDD53;
-    background: radial-gradient(circle, rgba(237, 221, 83, 1) 0%, rgba(237, 219, 80, 1) 41%, rgba(245, 158, 11, 1) 99%);
-
+    background: #70E000;
+    background: radial-gradient(circle, rgba(112, 224, 0, 1) 0%, rgba(158, 240, 26, 1) 52%, rgba(204, 255, 51, 1) 100%);
+    
     -webkit-background-clip: text;
     background-clip: text;
 
     -webkit-text-fill-color: transparent;
-    color: transparent;
-
-    
+    color: transparent;   
 }
 
 .signature{

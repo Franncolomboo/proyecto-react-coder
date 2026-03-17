@@ -27,7 +27,7 @@ main {
 }
 .slogan .span-principal {
   font-weight: 900;
-  color: orange;
+  color: greenyellow;
 }
 
 .content-container {
@@ -74,8 +74,8 @@ main {
   flex-direction: column;
   gap: 0.625rem;
   font-size: 2rem;
-  background: #EDDD53;
-  background: radial-gradient(circle, rgb(237, 221, 83) 0%, rgb(237, 219, 80) 41%, rgb(245, 158, 11) 99%);
+  background: #70E000;
+  background: radial-gradient(circle, rgb(112, 224, 0) 0%, rgb(158, 240, 26) 52%, rgb(204, 255, 51) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -258,7 +258,6 @@ main {
 
 .footer-container {
   background-color: rgb(104, 103, 103);
-  color: #000000;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -266,6 +265,7 @@ main {
 }
 
 .footer-content {
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -289,11 +289,28 @@ main {
   color: white;
 }
 
+.footer-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
 .footer-subtitles {
   justify-self: start;
   font-weight: 600;
   font-family: Helvetica, sans-serif;
   margin-bottom: 0.625rem;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  gap: 0.3125rem;
+}
+.footer-info .description-info {
+  font-size: 0.8rem;
+  color: rgb(161, 161, 161);
 }
 
 .copyright {
@@ -302,7 +319,11 @@ main {
 }
 
 .icon {
-  font-size: 22px;
+  background-color: yellowgreen;
+  padding: 5px;
+  color: rgb(53, 71, 17);
+  border-radius: 5px;
+  font-size: 20px;
 }
 
 .nav-container {
@@ -351,12 +372,12 @@ main {
   height: 2px; /* Grosor de la "línea de carga" */
   bottom: 0;
   left: 0;
-  background: #EDDD53;
-  background: linear-gradient(90deg, rgb(237, 221, 83) 0%, rgb(237, 219, 80) 41%, rgb(245, 158, 11) 99%);
+  background: #70E000;
+  background: linear-gradient(247deg, rgb(112, 224, 0) 0%, rgb(158, 240, 26) 50%, rgb(204, 255, 51) 100%);
   /* Estado inicial: escala 0 (invisible) desde la izquierda */
   transform: scaleX(0);
   transform-origin: bottom left;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* El efecto al pasar el mouse */
@@ -479,8 +500,9 @@ input:focus, textarea:focus {
 }
 
 .button-home {
-  background: #EDDD53;
-  background: radial-gradient(circle, rgb(237, 221, 83) 0%, rgb(237, 219, 80) 41%, rgb(245, 158, 11) 99%);
+  position: relative;
+  background: #70E000;
+  background: radial-gradient(circle, rgb(112, 224, 0) 0%, rgb(158, 240, 26) 52%, rgb(204, 255, 51) 100%);
   min-width: auto;
   max-width: 300px;
   color: black;
@@ -488,18 +510,39 @@ input:focus, textarea:focus {
   display: flex;
   justify-content: center;
   text-align: center;
-  border: orange solid 2px;
+  border: greenyellow solid 2px;
   border-radius: 10px;
   padding: 5px 15px;
   gap: 10px;
+  outline: none;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-home span {
   align-self: center;
 }
+.button-home .svg-arrow {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-home::before {
+  content: "";
+  background: linear-gradient(247deg, rgb(158, 240, 26) 0%, rgb(233, 255, 173) 53%, rgb(204, 255, 51) 100%);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  animation: glowing 20s linear infinite;
+}
 
 .button-home:hover {
-  transform: scale(1.02);
-  border: orange solid 2px;
+  border: greenyellow solid 2px;
+  transform: scale(1.05);
   box-shadow: none;
 }
 .button-home:hover .svg-arrow {
@@ -523,13 +566,17 @@ input:focus, textarea:focus {
 }
 
 .card {
-  background-color: rgb(98, 98, 99);
+  background: linear-gradient(180deg, rgb(204, 255, 51) 0%, rgb(183, 227, 50) 52%, rgb(2, 3, 0) 100%);
   width: 400px;
   height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .card img {
   width: 100%;
   object-fit: cover;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 .card a {
   text-decoration: none;
@@ -555,6 +602,10 @@ input:focus, textarea:focus {
   margin: 0;
 }
 
+.services-title {
+  text-align: center;
+}
+
 /* Contenedor del Grid */
 .services-grid {
   display: grid;
@@ -566,11 +617,26 @@ input:focus, textarea:focus {
   margin: 0 auto;
 }
 
-.services-title {
-  text-align: center;
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Viene desde más abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Estilo de la Tarjeta Individual con Degradado */
 .service-card {
   border: none !important;
   outline: none;
@@ -582,13 +648,21 @@ input:focus, textarea:focus {
   flex-direction: column;
   gap: 1.5rem;
   justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* --- CAMBIOS PARA LA CASCADA --- */
+  opacity: 0; /* Empiezan invisibles */
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  /* Usamos la variable --i que pasamos desde React */
+  /* El delay se calcula automáticamente para cada tarjeta */
+  animation-delay: calc(var(--i) * 0.15s);
+  /* La transición DEBE incluir transform para que el hover sea suave */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
 
-/* Efecto Hover para las Tarjetas */
+/* Efecto Hover */
 .service-card:hover {
-  transform: translateY(-10px);
+  /* Mantenemos el translateY negativo para el hover */
+  transform: translateY(-10px) !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -687,110 +761,207 @@ input:focus, textarea:focus {
   text-align: center;
 }
 
-.ant-collapse-item {
-  justify-content: center;
-  align-items: center;
-  background: #833AB4;
-  background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 40px;
-  background: #0a0a0c; /* Fondo oscuro como tu captura */
-  width: 100%;
-}
-
-.stepWrapper {
-  flex: 1;
+/* 1. Limpiamos el contenedor padre */
+.ant-collapse {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
+  gap: 20px;
+  border: none !important;
+  background: transparent !important;
 }
 
-.stepHeader {
-  display: flex;
-  align-items: center;
-  width: 100%;
+/* 2. Limpiamos CUALQUIER borde de los ítems */
+.ant-collapse > .ant-collapse-item {
+  border: none !important; /* Elimina bordes laterales y superiores */
+  border-bottom: none !important; /* Ant Design suele forzar este */
+  border-radius: 10px !important; /* Para que cada bloque sea redondeado */
+  overflow: hidden;
+  background: linear-gradient(247deg, rgb(158, 240, 26) 0%, rgb(233, 255, 173) 53%, rgb(204, 255, 51) 100%);
 }
 
-.iconCircle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  color: #666;
-  position: relative;
-  transition: all 0.4s ease;
+.ant-collapse-header {
+  border: none !important;
+  background: transparent !important;
 }
 
-/* Estado Activo (el que brilla azul) */
-.iconCircle.active {
-  background: linear-gradient(135deg, #3b82f6, #2dd4bf);
-  color: white;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  border: 2px solid #fff;
+.ant-collapse-content {
+  border-top: none !important;
+  background: transparent !important;
 }
 
-/* Punto verde de "estoy aquí" */
-.pulseDot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 12px;
-  height: 12px;
-  background: #4ade80;
-  border-radius: 50%;
-  border: 2px solid #0a0a0c;
+.ant-collapse > .ant-collapse-item:last-child {
+  border-radius: 10px !important;
 }
 
-/* Línea conectora */
-.connectorLine {
-  flex-grow: 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 0 -10px;
-  z-index: 1;
-}
-
-.progressFill {
-  height: 100%;
-  width: 50%; /* Esto lo puedes manejar dinámicamente */
-  background: linear-gradient(90deg, #3b82f6, #2dd4bf);
-}
-
-.progressFill.full {
-  width: 100%;
-}
-
-/* Textos */
-.info {
-  margin-top: 15px;
+/* --- CONTENEDOR PRINCIPAL DEL PROCESO --- */
+.proceso-container {
+  margin-top: 80px;
+  padding: 60px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
 }
 
-.time {
+/* --- REESTRUCTURACIÓN DE STEPS (ANT DESIGN) --- */
+.proceso-container .ant-steps-item-icon {
+  background: transparent !important;
+  border: none !important;
+  width: 70px !important;
+  height: 70px !important;
+  line-height: 70px !important;
+  margin-bottom: 15px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Centrado horizontal del nodo */
+  margin-inline-start: 0 !important;
+}
+
+/* Texto de los títulos (Briefing, Desarrollo, etc.) */
+.proceso-container .ant-steps-item-title {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  margin-top: 10px;
+}
+
+/* --- ESTILO DE LOS ICONOS (SVG) --- */
+.icon2 {
+  width: 60px;
+  height: 60px;
+  padding: 15px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #64748b;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+  position: relative;
+}
+
+/* Estado ACTIVO y COMPLETADO (Azul + Glow) */
+.ant-steps-item-process .icon2,
+.ant-steps-item-finish .icon2 {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  border: none;
+}
+
+/* Círculo blanco de selección (Pulsación) */
+.ant-steps-item-process .ant-steps-item-icon::after {
+  content: "";
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: pulseWhite 2s infinite;
+}
+
+@keyframes pulseWhite {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+/* --- LA LÍNEA DE PROGRESO (EL "TAIL") --- */
+.ant-steps-item-rail {
+  /* top: 35px es la mitad exacta de los 70px del contenedor del icono */
+  top: 35px !important;
+  padding: 0 !important;
+  /* El margen izquierdo hace que la línea empiece desde el centro del icono */
+  margin-left: 35px !important;
+}
+
+.ant-steps-item-rail::after {
+  background: rgba(255, 255, 255, 0.1) !important;
+  height: 3px !important;
+  border-radius: 10px;
+  width: 100% !important;
+  transition: background 0.3s;
+}
+
+/* --- ANIMACIÓN DE CARGA GRADUAL --- */
+.ant-steps-item-process .ant-steps-rail::after {
+  background: linear-gradient(90deg, #3b82f6 50%, rgba(255, 255, 255, 0.1) 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: 100% 0 !important;
+  /* Usamos 'linear' para que el llenado sea constante y no a saltos */
+  animation: loadingProgress 8s linear forwards !important;
+}
+
+/* Pasos ya terminados se quedan azules sólidos */
+.ant-steps-item-finish .ant-steps-item-rail::after {
+  background: #3b82f6 !important;
+}
+
+@keyframes loadingProgress {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+/* --- CAJA DE TEXTO DESCRIPTIVO (ABAJO) --- */
+.step-context-box {
+  margin-top: 50px;
+  padding: 30px;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 20px;
+  border-left: 5px solid #3b82f6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  font-size: 12px;
-  color: #888;
+  animation: fadeInText 0.5s ease;
 }
 
-.title {
-  font-size: 14px;
-  color: #fff;
-  margin-top: 5px;
-  font-weight: 500;
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.step-description-text {
+  color: #cbd5e1 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .proceso-container {
+    padding: 30px 10px;
+  }
+  .icon2 {
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+  }
+  .proceso-container .ant-steps-item-icon {
+    width: 55px !important;
+    height: 55px !important;
+  }
+  .proceso-container .ant-steps-rail {
+    top: 27px !important; /* Ajuste para versión móvil */
+    margin-left: 27px !important;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

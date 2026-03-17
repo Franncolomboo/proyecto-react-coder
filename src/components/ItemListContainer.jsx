@@ -1,15 +1,13 @@
-import { useRef } from "react"; // IMPORTANTE
-import { useParams } from "react-router-dom";
-import { Collapse, Button } from "antd";
-import { PlusOutlined } from '@ant-design/icons';
+import { useState, useRef ,useEffect} from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Collapse, Button, Steps, Typography } from "antd";
+import { PlusOutlined, CheckOutlined, SolutionOutlined, RocketOutlined, SmileOutlined } from '@ant-design/icons';
 import img from "../assets/img/card-relleno.avif";
 import me from "../assets/img/me-photo.avif";
 import serviciosData from "../servicios.json";
-import { CheckOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { ArrowRightOutlined } from "@ant-design/icons";
-// import WorkProcess from "../components/WorkProcess";
+
+const { Text } = Typography;
 
 function ItemListContainer() {
     const { idCategory } = useParams();
@@ -17,6 +15,45 @@ function ItemListContainer() {
     const servicesRef = useRef(null);
     const navigate = useNavigate();
     const { addToCart } = useCart();
+
+    const [current, setCurrent] = useState(0);
+
+
+
+    const onChange = (value) => {
+        setCurrent(value);
+    };
+
+    const pasosProceso = [
+        {
+            title: 'Briefing',
+            content: 'Analizamos tus necesidades y definimos los objetivos del proyecto.',
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-target-arrow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 7a5 5 0 1 0 5 5" /><path d="M13 3.055a9 9 0 1 0 7.941 7.945" /><path d="M15 6v3h3l3 -3h-3v-3l-3 3" /><path d="M15 9l-3 3" /></svg>
+        },
+        {
+            title: 'Desarrollo',
+            content: 'Transformo las ideas en código limpio, escalable y optimizado.',
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-palette"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /><path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
+        },
+        {
+            title: 'Entrega',
+            content: 'Lanzamiento del proyecto y soporte para asegurar el éxito total.',
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-code"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></svg>
+        },
+        {
+            title: 'Entrega',
+            content: 'Bla bla bla bla',
+            icon: <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 lucide-rocket-icon lucide-rocket"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+        }
+    ];
+
+    // useEffect(() => {
+    //     const timer = setInterval(() => {
+    //         setCurrent((prev) => (prev === pasosProceso.length - 1 ? 0 : prev + 1));
+    //     }, 22000); // Sincronizado con CSS
+
+    //     return () => clearInterval(timer);
+    // }, [pasosProceso.length]);
 
     const scrollToContent = () => {
         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -31,8 +68,8 @@ function ItemListContainer() {
             key: "1",
             label: "¿Cuáles son los servicios que ofreces?",
             children: "Ofrezco una amplia gama de servicios de desarrollo web, incluyendo diseño de sitios web, desarrollo de aplicaciones web, optimización SEO y mantenimiento continuo."
-            },
-        {            
+        },
+        {
             key: "2",
             label: "¿Cuál es tu proceso de trabajo?",
             children: "Mi proceso de trabajo se basa en la colaboración estrecha con mis clientes. Comenzamos con una consulta para entender sus necesidades, luego desarrollo un plan personalizado y finalmente implemento la solución mientras mantengo una comunicación constante."
@@ -72,57 +109,47 @@ function ItemListContainer() {
                 </section>
             )}
             <div className="about-main-content" ref={sectionRef}>
-                {!idCategory ? (<>
+                {!idCategory ? (
                     <section className="about-content">
                         <div className="about-container">
                             <div className="about-image">
-                                <img src={me} alt="" />
+                                <img src={me} alt="Francisco Colombo" />
                             </div>
                             <div className="about-title-box">
                                 <h2 className="about-title">Conoceme</h2>
                             </div>
                             <div className="about-p-content">
-                                <p className="about-p">Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales, creando sitios web a medida que son rápidos, modernos y fáciles de usar. Mi formación académica me permite analizar cada proyecto desde la lógica y la eficiencia, adaptándome a lo que necesites: desde una landing page sencilla hasta plataformas más complejas.
-
-Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar de forma transparente: escucho tu idea, analizamos juntos la mejor manera de llevarla a cabo y te mantengo al tanto de cada avance. Al estar formándome en Sistemas, no solo busco que tu web se vea bien hoy, sino que esté construida con una base sólida para que pueda crecer junto con tu proyecto.</p>
-                            <Button className="ant-btn2" onClick={handleGoToServices}>
-                                Conoce mis servicios
-                            </Button>
+                                <p className="about-p">Hola! Soy Francisco. Me dedico a transformar ideas en realidades digitales, creando sitios web a medida que son rápidos, modernos y fáciles de usar. Mi prioridad es que te sientas acompañado en todo el proceso.</p>
+                                <Button className="ant-btn2" onClick={handleGoToServices}>
+                                    Conoce mis servicios
+                                </Button>
                             </div>
                         </div>
                     </section>
-                    </>
-                ): idCategory === "servicios" ? (
+                ) : idCategory === "servicios" ? (
                     <section ref={servicesRef} className="services-content">
                         <h2 className="services-title">Servicios</h2>
                         <div className="services-grid">
-                            {serviciosData.map((servicio) => (
-                                <div 
+                            {serviciosData.map((servicio, index) => (
+                                <div
                                     key={servicio.id} 
                                     className="service-card"
                                     style={{ 
-                                        background: `linear-gradient(180deg, ${servicio.color} 0%, ${servicio["color-mid"]} 50% , ${servicio["color-end"]} 100%)`
+                                        background: `linear-gradient(180deg, ${servicio.color} 0%, ${servicio["color-mid"]} 50% , ${servicio["color-end"]} 100%)`,
+                                        "--i": index
                                     }}
                                 >
                                     <div className="card-header">
                                         <h3 className="service-title">{servicio.title}</h3>
                                     </div>
-
-                                    <p className="service-summary">
-                                        {servicio.descripcion}
-                                    </p>
-
+                                    <p className="service-summary">{servicio.descripcion}</p>
                                     <Button className="service-btn" onClick={() => addToCart(servicio)}>
                                         {servicio.boton}
                                     </Button>
-
-                                    <div className="separator">
-
-                                    </div>
-
+                                    <div className="separator"></div>
                                     <ul className="service-features">
-                                        {servicio.features.map((feature, index) => (
-                                            <li key={index}>
+                                        {servicio.features.map((feature, fIndex) => (
+                                            <li key={fIndex}>
                                                 <CheckOutlined className="check-icon" />
                                                 <span>{feature}</span>
                                             </li>
@@ -131,108 +158,78 @@ Mi prioridad es que te sientas acompañado en todo el proceso. Me gusta trabajar
                                 </div>
                             ))}
                         </div>
+                        
+                        <div className="proceso-container">
+                            <h2 className="services-title">Mi Proceso</h2>
+                            <Steps 
+                                key={current}
+                                current={current} 
+                                onChange={onChange}
+                                items={pasosProceso.map(item => ({
+                                    title: item.title,
+                                    icon: item.icon
+                                }))}
+                            />
+                            <div className="step-context-box">
+                                <Text className="step-description-text">
+                                    {pasosProceso[current].content}
+                                </Text>
+                            </div>
+                        </div>
+
+
                     </section>
-                ):idCategory === "portfolio" ? (
+                ) : idCategory === "portfolio" ? (
                     <section className="portfolio-content">
                         <h2 className="port-title">Portfolio</h2>
                         <div className="cards-content">
-                            <div className="card">
-                                <img src={img} alt="" />
-                                <div className="card-text">
-                                    <h3 className="card-title">Proyecto 1</h3>
-                                    <p className="card-description">Descripción breve del proyecto 1.</p>
+                            {[1, 2, 3, 4, 5, 6].map((_, index) => (
+                                <div className="card" key={index} style={{ "--i": index }}>
+                                    <img src={img} alt="" />
+                                    <div className="card-text">
+                                        <h3 className="card-title">Proyecto {index + 1}</h3>
+                                        <p className="card-description">Descripción breve del proyecto {index + 1}.</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card">
-                                <img src={img} alt="" />
-                                <div className="card-text">
-                                    <h3 className="card-title">Proyecto 1</h3>
-                                    <p className="card-description">Descripción breve del proyecto 1.</p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={img} alt="" />
-                                <div className="card-text">
-                                    <h3 className="card-title">Proyecto 1</h3>
-                                    <p className="card-description">Descripción breve del proyecto 1.</p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={img} alt="" />
-                                <div className="card-text">
-                                    <h3 className="card-title">Proyecto 1</h3>
-                                    <p className="card-description">Descripción breve del proyecto 1.</p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={img} alt="" />
-                                <div className="card-text">
-                                    <h3 className="card-title">Proyecto 1</h3>
-                                    <p className="card-description">Descripción breve del proyecto 1.</p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={img} alt="" />
-                                <div className="card-text">
-                                    <h3 className="card-title">Proyecto 1</h3>
-                                    <p className="card-description">Descripción breve del proyecto 1.</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </section>
                 ) : idCategory === "preguntas-frecuentes" ? (
                     <section className="faq-content">
                         <h2 className="faq-title">Preguntas Frecuentes</h2>
-                        <Collapse expandIconPosition="end" expandIcon={({ isActive }) => (<PlusOutlined rotate={isActive ? 90 : 0} style={{ fontSize: '16px', color: '#fff'}} />)} className="faq-collapse" accordion items={faqs}></Collapse>
+                        <Collapse expandIconPosition="end" expandIcon={({ isActive }) => (<PlusOutlined rotate={isActive ? 90 : 0} style={{fontSize: '16px', color: '#fff'}} />)} className="faq-collapse" accordion items={faqs}></Collapse>
                     </section>
-                ): idCategory==="contacto"?(
-                <section className="contact-content">
-                    <h2 className="contacto-title">Contacto</h2>  
-                    <div className="form-container">
-                        <form className="contact-form" action="https://formspree.io/f/xkoqgeyo" method="POST">
-                            
-                            <label htmlFor="name">Ingrese su nombre completo:</label>
-                            <input type="text" id="name" name="name" required />
-                            
-                            <label htmlFor="email">Ingrese su correo electrónico:</label>
-                            <input type="email" id="email" name="email" required />
-                            
-                            <div className="package-options">
-                                <label htmlFor="paquete">Selecciona tu paquete:</label>
-                                <div className="package-group">
-                                    <input className="package-radio" type="radio" id="paquete-basico" name="paquete" value="basico" />
-                                    <label htmlFor="paquete-basico">Paquete Básico</label>
+                ) : idCategory === "contacto" ? (
+                    <section className="contact-content">
+                        <h2 className="contacto-title">Contacto</h2>  
+                        <div className="form-container">
+                            <form className="contact-form" action="https://formspree.io/f/xkoqgeyo" method="POST">
+                                <label htmlFor="name">Ingrese su nombre completo:</label>
+                                <input type="text" id="name" name="name" required />
+                                <label htmlFor="email">Ingrese su correo electrónico:</label>
+                                <input type="email" id="email" name="email" required />
+                                <div className="package-options">
+                                    <label htmlFor="paquete">Selecciona tu paquete:</label>
+                                    <div className="package-group">
+                                        <input className="package-radio" type="radio" id="paquete-basico" name="paquete" value="basico" />
+                                        <label htmlFor="paquete-basico">Paquete Básico</label>
+                                    </div>
+                                    <div className="package-group">
+                                        <input className="package-radio" type="radio" id="paquete-estandar" name="paquete" value="estandar" />
+                                        <label htmlFor="paquete-estandar">Paquete Estándar</label>
+                                    </div>
+                                    <div className="package-group">
+                                        <input className="package-radio" type="radio" id="paquete-completo" name="paquete" value="completo" />
+                                        <label htmlFor="paquete-completo">Paquete Completo</label>
+                                    </div>
                                 </div>
-                                <div className="package-group">
-                                    <input className="package-radio" type="radio" id="paquete-estandar" name="paquete" value="estandar" />
-                                    <label htmlFor="paquete-estandar">Paquete Estándar</label>
-                                </div>
-                                <div className="package-group">
-                                    <input className="package-radio" type="radio" id="paquete-completo" name="paquete" value="completo" />
-                                    <label htmlFor="paquete-completo">Paquete Completo</label>
-                                </div>
-                            </div>
-
-                            <div className="package-options">
-                                <label htmlFor="presupuesto">¿Cuál es tu presupuesto aproximado? (opcional)</label>
-                                <div className="package-group">
-                                    <select name="presupuesto" id="presupuesto">
-                                        <option value="" disabled selected>Elegi tu presupuesto</option>
-                                        <option value="">US$300</option>
-                                        <option value="">US$500</option>
-                                        <option value="">US$1000 - US$1500</option>
-                                        <option value="">+ US$1500</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <label htmlFor="message">Ingrese su mensaje: (opcional)</label>
-                            <textarea id="message" name="message" required></textarea>
-                            <Button className="sent-button" htmlType="submit">Enviar</Button>
-                        </form>
-                    </div>
-                </section>):
-                null }
+                                <label htmlFor="message">Ingrese su mensaje: (opcional)</label>
+                                <textarea id="message" name="message" required></textarea>
+                                <Button className="sent-button" htmlType="submit">Enviar</Button>
+                            </form>
+                        </div>
+                    </section>
+                ) : null}
             </div>
         </main>
     );

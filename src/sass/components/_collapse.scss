@@ -1,6 +1,31 @@
-.ant-collapse-item{
-    justify-content: center;
-    align-items: center;
-    background: #833AB4;
-    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+/* 1. Limpiamos el contenedor padre */
+.ant-collapse {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* 2. Limpiamos CUALQUIER borde de los ítems */
+.ant-collapse > .ant-collapse-item {
+    border: none !important; /* Elimina bordes laterales y superiores */
+    border-bottom: none !important; /* Ant Design suele forzar este */
+    border-radius: 10px !important; /* Para que cada bloque sea redondeado */
+    overflow: hidden;
+    background: linear-gradient(247deg,rgba(158, 240, 26, 1) 0%, rgba(233, 255, 173, 1) 53%, rgba(204, 255, 51, 1) 100%);
+}
+
+.ant-collapse-header {
+    border: none !important;
+    background: transparent !important;
+}
+
+.ant-collapse-content {
+    border-top: none !important;
+    background: transparent !important;
+}
+
+.ant-collapse > .ant-collapse-item:last-child {
+    border-radius: 10px !important;
 }

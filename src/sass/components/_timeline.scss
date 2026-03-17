@@ -1,98 +1,157 @@
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 40px;
-  background: #0a0a0c; /* Fondo oscuro como tu captura */
-  width: 100%;
-}
-
-.stepWrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.stepHeader {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.iconCircle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  color: #666;
-  position: relative;
-  transition: all 0.4s ease;
-}
-
-/* Estado Activo (el que brilla azul) */
-.iconCircle.active {
-  background: linear-gradient(135deg, #3b82f6, #2dd4bf);
-  color: white;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  border: 2px solid #fff;
-}
-
-/* Punto verde de "estoy aquí" */
-.pulseDot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 12px;
-  height: 12px;
-  background: #4ade80;
-  border-radius: 50%;
-  border: 2px solid #0a0a0c;
-}
-
-/* Línea conectora */
-.connectorLine {
-  flex-grow: 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 0 -10px;
-  z-index: 1;
-}
-
-.progressFill {
-  height: 100%;
-  width: 50%; /* Esto lo puedes manejar dinámicamente */
-  background: linear-gradient(90deg, #3b82f6, #2dd4bf);
-}
-
-.progressFill.full {
-  width: 100%;
-}
-
-/* Textos */
-.info {
-  margin-top: 15px;
+/* --- CONTENEDOR PRINCIPAL DEL PROCESO --- */
+.proceso-container {
+  margin-top: 80px;
+  padding: 60px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
 }
 
-.time {
+/* --- REESTRUCTURACIÓN DE STEPS (ANT DESIGN) --- */
+.proceso-container .ant-steps-item-icon {
+  background: transparent !important;
+  border: none !important;
+  width: 70px !important;
+  height: 70px !important;
+  line-height: 70px !important;
+  margin-bottom: 15px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Centrado horizontal del nodo */
+  margin-inline-start: 0 !important; 
+}
+
+/* Texto de los títulos (Briefing, Desarrollo, etc.) */
+.proceso-container .ant-steps-item-title {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  margin-top: 10px;
+}
+
+/* --- ESTILO DE LOS ICONOS (SVG) --- */
+.icon2 {
+  width: 60px;
+  height: 60px;
+  padding: 15px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #64748b;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+  position: relative;
+}
+
+/* Estado ACTIVO y COMPLETADO (Azul + Glow) */
+.ant-steps-item-process .icon2, 
+.ant-steps-item-finish .icon2 {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  border: none;
+}
+
+/* Círculo blanco de selección (Pulsación) */
+.ant-steps-item-process .ant-steps-item-icon::after {
+  content: '';
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: pulseWhite 2s infinite;
+}
+
+@keyframes pulseWhite {
+  0% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+/* --- LA LÍNEA DE PROGRESO (EL "TAIL") --- */
+.ant-steps-item-rail {
+  /* top: 35px es la mitad exacta de los 70px del contenedor del icono */
+  top: 35px !important; 
+  padding: 0 !important;
+  /* El margen izquierdo hace que la línea empiece desde el centro del icono */
+  margin-left: 35px !important;
+}
+
+.ant-steps-item-rail::after {
+  background: rgba(255, 255, 255, 0.1) !important;
+  height: 3px !important;
+  border-radius: 10px;
+  width: 100% !important;
+  transition: background 0.3s;
+}
+
+/* --- ANIMACIÓN DE CARGA GRADUAL --- */
+.ant-steps-item-process .ant-steps-rail::after {
+  background: linear-gradient(90deg, #3b82f6 50%, rgba(255, 255, 255, 0.1) 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: 100% 0 !important;
+  /* Usamos 'linear' para que el llenado sea constante y no a saltos */
+  animation: loadingProgress 8s linear forwards !important;
+}
+
+/* Pasos ya terminados se quedan azules sólidos */
+.ant-steps-item-finish .ant-steps-item-rail::after {
+  background: #3b82f6 !important;
+}
+
+@keyframes loadingProgress {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+/* --- CAJA DE TEXTO DESCRIPTIVO (ABAJO) --- */
+.step-context-box {
+  margin-top: 50px;
+  padding: 30px;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 20px;
+  border-left: 5px solid #3b82f6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  font-size: 12px;
-  color: #888;
+  animation: fadeInText 0.5s ease;
 }
 
-.title {
-  font-size: 14px;
-  color: #fff;
-  margin-top: 5px;
-  font-weight: 500;
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-description-text {
+  color: #cbd5e1 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .proceso-container {
+    padding: 30px 10px;
+  }
+  .icon2 {
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+  }
+  .proceso-container .ant-steps-item-icon {
+    width: 55px !important;
+    height: 55px !important;
+  }
+  .proceso-container .ant-steps-rail {
+    top: 27px !important; /* Ajuste para versión móvil */
+    margin-left: 27px !important;
+  }
 }

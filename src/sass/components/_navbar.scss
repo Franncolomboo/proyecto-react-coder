@@ -45,13 +45,13 @@
   height: 2px; /* Grosor de la "línea de carga" */
   bottom: 0;
   left: 0;
-  background: #EDDD53;
-  background: linear-gradient(90deg, rgba(237, 221, 83, 1) 0%, rgba(237, 219, 80, 1) 41%, rgba(245, 158, 11, 1) 99%);
+  background: #70E000;
+  background: linear-gradient(247deg, rgba(112, 224, 0, 1) 0%, rgba(158, 240, 26, 1) 50%, rgba(204, 255, 51, 1) 100%);
   
   /* Estado inicial: escala 0 (invisible) desde la izquierda */
   transform: scaleX(0);
   transform-origin: bottom left;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* El efecto al pasar el mouse */
