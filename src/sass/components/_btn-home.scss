@@ -1,4 +1,4 @@
-.button-home{
+.button-home-1{
     position:relative;
     background: #70E000;
     background: radial-gradient(circle, rgba(112, 224, 0, 1) 0%, rgba(158, 240, 26, 1) 52%, rgba(204, 255, 51, 1) 100%);
@@ -23,7 +23,7 @@
     }
 }
 
-.button-home::before{
+.button-home-1::before{
     content:"";
     background: linear-gradient(247deg,rgba(158, 240, 26, 1) 0%, rgba(233, 255, 173, 1) 53%, rgba(204, 255, 51, 1) 100%);
     position: absolute;
@@ -39,7 +39,7 @@
     animation: glowing 20s linear infinite;
 }
 
-.button-home:hover{
+.button-home-1:hover{
     border: greenyellow solid 2px;
     transform: scale(1.05);
     box-shadow: none;

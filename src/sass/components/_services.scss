@@ -2,10 +2,9 @@
     text-align: center;
 }
 
-/* Contenedor del Grid */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 2rem;
     padding: 2rem;
     width: 100%;
@@ -16,7 +15,7 @@
 @keyframes fadeInUp {
     0% {
         opacity: 0;
-        transform: translateY(50px); /* Viene desde más abajo */
+        transform: translateY(50px); 
     }
     100% {
         opacity: 1;
@@ -47,39 +46,33 @@
     justify-content: space-between; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
-    /* --- CAMBIOS PARA LA CASCADA --- */
-    opacity: 0; /* Empiezan invisibles */
+    opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     
-    /* Usamos la variable --i que pasamos desde React */
-    /* El delay se calcula automáticamente para cada tarjeta */
     animation-delay: calc(var(--i) * 0.15s); 
 
-    /* La transición DEBE incluir transform para que el hover sea suave */
     transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
 
-/* Efecto Hover */
+
 .service-card:hover {
-    /* Mantenemos el translateY negativo para el hover */
     transform: translateY(-10px) !important; 
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .service-title {
-    font-family: Golos, sans-serif;
-    font-size: 1.7rem;
-    color: white; /* Títulos blancos para contraste */
+    font-size: 1.7rem ;
+    color: white; 
     margin-bottom: 1.5rem;
 }
 
-/* Estilos para la Lista de Características */
+
 .service-features {
     list-style: none;
     padding: 0;
     text-align: left;
     margin-bottom: 2rem;
-    flex-grow: 1; /* Para alinear botones */
+    flex-grow: 1; 
 }
 
 .service-features li {
@@ -88,17 +81,16 @@
     margin-bottom: 12px;
     font-size: 0.95rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.9); /* Texto blanco suave */
+    color: rgba(255, 255, 255, 0.9); 
     line-height: 1.4;
 }
 
-/* Icono de Check en blanco */
 .check-icon {
     font-weight: bold;
     color: white;
 }
 
-/* Resumen Aclaratorio en blanco suave */
+
 .service-summary {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.8);
@@ -107,11 +99,10 @@
     font-weight: 600;
 }
 
-/* Estilos para el Botón de Acción */
 .service-btn {
-    background-color: white ; /* Botones blancos */
+    background-color: white ; 
     border-color: white !important;
-    color: #333 !important; /* Texto oscuro para contraste */
+    color: #333 !important; 
     width: 100%;
     font-weight: bold;
     font-size: 1rem;
@@ -129,9 +120,11 @@
     border-color: #383d42 !important;
 }
 
-/* Responsive para Móvil */
 @media (max-width: 992px) {
+    .proceso-content{
+        height: auto;
+    }
     .services-grid {
-        grid-template-columns: 1fr; /* Una tarjeta debajo de otra */
+        grid-template-columns: 1fr; 
     }
 }

@@ -22,15 +22,15 @@ main {
   flex-grow: 1;
 }
 
-.slogan {
+.slogan-1 {
   font-size: 1rem;
 }
-.slogan .span-principal {
+.slogan-1 .span-principal-1 {
   font-weight: 900;
   color: greenyellow;
 }
 
-.content-container {
+.content-container-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@ main {
   min-height: 100vh;
 }
 
-.slogan-container {
+.slogan-container-1 {
   color: white;
   display: flex;
   flex-direction: column;
@@ -49,12 +49,12 @@ main {
   margin-top: 7rem;
   gap: 1.25rem;
 }
-.slogan-container .span-marca {
+.slogan-container-1 .span-marca {
   font-weight: bold;
   color: white;
 }
 
-.hero-content {
+.hero-content-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +64,7 @@ main {
   width: 100dvw;
 }
 
-.brand-titles {
+.brand-titles-1 {
   font-size: 3rem;
   font-weight: 700;
   color: white;
@@ -82,7 +82,7 @@ main {
   color: transparent;
 }
 
-.signature {
+.signature-1 {
   font-size: 1.5rem;
   font-weight: 400;
   -webkit-text-fill-color: white;
@@ -90,6 +90,15 @@ main {
   margin-top: -0.625rem;
 }
 
+@media (max-width: 480px) {
+  .slogan {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  .brand-titles-1 {
+    font-size: 1.4rem;
+  }
+}
 .about-main-content {
   width: 100%;
 }
@@ -163,6 +172,9 @@ main {
 
 /* Responsive para móvil */
 @media (max-width: 768px) {
+  .about-content {
+    padding: 10px;
+  }
   .about-container {
     grid-template-columns: 1fr;
     grid-template-areas: "titulo" "foto" "texto";
@@ -256,6 +268,16 @@ main {
   margin: 0;
 }
 
+@media (max-width: 480px) {
+  .faq-title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 530px) {
+  .faq-title {
+    font-size: 2rem;
+  }
+}
 .proceso-content {
   height: 100vh;
 }
@@ -394,6 +416,20 @@ main {
   color: #ccc;
 }
 
+.anticon.carrito svg {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  fill: white;
+}
+
+@media (max-width: 576px) {
+  .nav-list {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+}
 .form-container {
   padding: 1.25rem;
   display: flex;
@@ -507,7 +543,7 @@ input:focus, textarea:focus {
   font-weight: 500;
 }
 
-.button-home {
+.button-home-1 {
   position: relative;
   background: #70E000;
   background: radial-gradient(circle, rgb(112, 224, 0) 0%, rgb(158, 240, 26) 52%, rgb(204, 255, 51) 100%);
@@ -525,14 +561,14 @@ input:focus, textarea:focus {
   outline: none;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.button-home span {
+.button-home-1 span {
   align-self: center;
 }
-.button-home .svg-arrow {
+.button-home-1 .svg-arrow {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button-home::before {
+.button-home-1::before {
   content: "";
   background: linear-gradient(247deg, rgb(158, 240, 26) 0%, rgb(233, 255, 173) 53%, rgb(204, 255, 51) 100%);
   position: absolute;
@@ -548,12 +584,12 @@ input:focus, textarea:focus {
   animation: glowing 20s linear infinite;
 }
 
-.button-home:hover {
+.button-home-1:hover {
   border: greenyellow solid 2px;
   transform: scale(1.05);
   box-shadow: none;
 }
-.button-home:hover .svg-arrow {
+.button-home-1:hover .svg-arrow {
   transform: translateX(5px);
   transition: transform 0.3s ease;
 }
@@ -614,10 +650,9 @@ input:focus, textarea:focus {
   text-align: center;
 }
 
-/* Contenedor del Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   padding: 2rem;
   width: 100%;
@@ -628,7 +663,7 @@ input:focus, textarea:focus {
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(50px); /* Viene desde más abajo */
+    transform: translateY(50px);
   }
   100% {
     opacity: 1;
@@ -657,37 +692,29 @@ input:focus, textarea:focus {
   gap: 1.5rem;
   justify-content: space-between;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  /* --- CAMBIOS PARA LA CASCADA --- */
-  opacity: 0; /* Empiezan invisibles */
+  opacity: 0;
   animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  /* Usamos la variable --i que pasamos desde React */
-  /* El delay se calcula automáticamente para cada tarjeta */
   animation-delay: calc(var(--i) * 0.15s);
-  /* La transición DEBE incluir transform para que el hover sea suave */
   transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
 
-/* Efecto Hover */
 .service-card:hover {
-  /* Mantenemos el translateY negativo para el hover */
   transform: translateY(-10px) !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .service-title {
-  font-family: Golos, sans-serif;
   font-size: 1.7rem;
-  color: white; /* Títulos blancos para contraste */
+  color: white;
   margin-bottom: 1.5rem;
 }
 
-/* Estilos para la Lista de Características */
 .service-features {
   list-style: none;
   padding: 0;
   text-align: left;
   margin-bottom: 2rem;
-  flex-grow: 1; /* Para alinear botones */
+  flex-grow: 1;
 }
 
 .service-features li {
@@ -696,17 +723,15 @@ input:focus, textarea:focus {
   margin-bottom: 12px;
   font-size: 0.95rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9); /* Texto blanco suave */
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.4;
 }
 
-/* Icono de Check en blanco */
 .check-icon {
   font-weight: bold;
   color: white;
 }
 
-/* Resumen Aclaratorio en blanco suave */
 .service-summary {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.8);
@@ -715,11 +740,10 @@ input:focus, textarea:focus {
   font-weight: 600;
 }
 
-/* Estilos para el Botón de Acción */
 .service-btn {
-  background-color: white; /* Botones blancos */
+  background-color: white;
   border-color: white !important;
-  color: #333 !important; /* Texto oscuro para contraste */
+  color: #333 !important;
   width: 100%;
   font-weight: bold;
   font-size: 1rem;
@@ -737,10 +761,12 @@ input:focus, textarea:focus {
   border-color: #383d42 !important;
 }
 
-/* Responsive para Móvil */
 @media (max-width: 992px) {
+  .proceso-content {
+    height: auto;
+  }
   .services-grid {
-    grid-template-columns: 1fr; /* Una tarjeta debajo de otra */
+    grid-template-columns: 1fr;
   }
 }
 .ant-btn.carrito-btn {
@@ -963,6 +989,218 @@ input:focus, textarea:focus {
   .proceso-container .ant-steps-item-icon {
     width: 55px !important;
     height: 55px !important;
+  }
+}
+.checkout-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.checkout-container .success-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 1px dashed #70E000;
+  line-height: 1.8;
+}
+
+.checkout-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(112, 224, 0, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+.checkout-card h3 {
+  color: #70E000;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.input-group label {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+.input-group input, .input-group select {
+  background: #151515;
+  border: 1px solid #333;
+  padding: 0.8rem;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+.input-group input:focus, .input-group select:focus {
+  border-color: #70E000;
+  box-shadow: 0 0 8px rgba(112, 224, 0, 0.2);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 500px) {
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.order-summary {
+  text-align: left;
+  margin-top: 2rem;
+}
+.order-summary hr {
+  border: 0;
+  border-top: 1px solid #222;
+  margin-bottom: 2rem;
+}
+.order-summary p {
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.5;
+}
+
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(112, 224, 0, 0.05);
+  border-radius: 10px;
+}
+.total-box .price {
+  color: #70E000;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.sent-button {
+  width: 100%;
+  background: #70E000;
+  color: black;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.sent-button:hover:not(:disabled) {
+  background: #8cf000;
+  transform: translateY(-3px);
+}
+.sent-button:disabled {
+  background: #333;
+  color: #666;
+}
+
+.checkout-container.success {
+  text-align: center;
+  padding-top: 50px;
+}
+.checkout-container.success .check-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: rgba(112, 224, 0, 0.1);
+  border-radius: 50%;
+  border: 2px solid #70E000;
+  margin-bottom: 20px;
+  box-shadow: 0 0 30px rgba(112, 224, 0, 0.3);
+  animation: pulseCheck 2s infinite;
+}
+.checkout-container.success .check-container .check-icon {
+  font-size: 3.5rem;
+  color: #70E000;
+}
+.checkout-container.success .order-badge {
+  background: #1a1a1a;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 10px;
+  margin: 15px 0;
+  border: 1px solid #333;
+}
+.checkout-container.success .order-badge .label {
+  color: #888;
+  font-size: 0.9rem;
+}
+.checkout-container.success .order-badge .value {
+  color: #70E000;
+  font-weight: bold;
+  font-family: monospace;
+}
+.checkout-container.success .success-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(112, 224, 0, 0.4);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+.checkout-container.success .btn-home-success {
+  background: #70E000;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+.checkout-container.success .btn-home-success:hover {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #222;
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.progress-bar .progress-fill {
+  height: 100%;
+  background: #70E000;
+  transition: width 1s linear;
+}
+
+@keyframes pulseCheck {
+  0% {
+    box-shadow: 0 0 0 0 rgba(112, 224, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(112, 224, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(112, 224, 0, 0);
   }
 }
 

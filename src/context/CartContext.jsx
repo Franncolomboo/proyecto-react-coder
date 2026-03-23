@@ -6,6 +6,8 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
+    const clearCart = () => setCart([]);
+
     const addToCart = (item) => {
         setCart(prevCart => {
             const isItemInCart = prevCart.find((cartItem) => cartItem.id === item.id);
@@ -38,7 +40,7 @@ export const CartProvider = ({ children }) => {
     const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, updateQuantity, removeItem, totalQuantity }}>
+        <CartContext.Provider value={{ cart, addToCart, updateQuantity, removeItem, totalQuantity, clearCart }}>
             {children}
         </CartContext.Provider>
     );

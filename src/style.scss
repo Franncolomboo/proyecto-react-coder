@@ -1,10 +1,11 @@
 @import "./sass/utilities/variables";
 @import "./sass/utilities/mixins";
-@import "./sass/utilities/funciones";
+
+
+
 
 @import "./sass/base/reset";
 @import "./sass/layout/main";
-@import "./sass/layout/header";
 @import "./sass/layout/footer";
 @import "./sass/components/navbar";
 @import "./sass/components/form";
@@ -15,3 +16,4 @@
 @import "./sass/components/btn-cart";
 @import "./sass/components/collapse";
 @import "./sass/components/timeline";
+@import "./sass/components/checkout";

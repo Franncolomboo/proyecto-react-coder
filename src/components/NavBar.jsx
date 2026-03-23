@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
-import Carrito from "./CartWidget"
+import { Link, NavLink } from "react-router-dom";
+import Carrito from "./CartWidget";
 import { HomeFilled } from '@ant-design/icons';
 
-function NavBar(){
+function NavBar() {
     return (
+        <>
         <div className="nav-container">
             <nav className="nav-container">
                 <ul className="nav-list">
@@ -12,12 +13,11 @@ function NavBar(){
                     <li><NavLink className="nav-link" to="/portfolio">Portfolio</NavLink></li>                    
                     <li><NavLink className="nav-link" to="/preguntas-frecuentes">Faqs</NavLink></li>
                     <li><NavLink className="nav-link" to="/contacto">Contacto</NavLink></li>
-                    <li><NavLink className="nav-link" href=""><Carrito /></NavLink></li>
+                    <li><NavLink className="nav-link" to="#"><Carrito /></NavLink></li>
                 </ul>
             </nav>
         </div>
-    );
+    </>);
 }
-
 
 export default NavBar;

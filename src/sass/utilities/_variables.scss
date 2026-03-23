@@ -1,1 +1,9 @@
 $fuente: "Inter", sans-serif;
+
+// Breakpoints para diseño responsive
+$breakpoint-xs: 480px;   // Móviles pequeños
+$breakpoint-sm: 576px;   // Móviles grandes / Tablets verticales
+$breakpoint-md: 768px;   // Tablets horizontales
+$breakpoint-lg: 992px;   // Laptops / Desktops pequeños
+$breakpoint-xl: 1200px;  // Desktops grandes
+$breakpoint-xxl: 1400px; // Pantallas Ultra-wide

@@ -1,5 +1,5 @@
 import { Badge, Button, Popover, List, Typography, Space } from "antd";
-import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { PlusOutlined, MinusOutlined, DeleteOutlined , ShoppingCartOutlined } from "@ant-design/icons";
 import carritoIcon from "../assets/img/carrito.png";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
@@ -52,7 +52,7 @@ function CartWidget() {
                         )}
                     />
                     <div style={{ marginTop: 15, textAlign: 'center', borderTop: '1px solid #f0f0f0', paddingTop: 10 }}>
-                        <Link to="/cart">
+                        <Link to="/Checkout">
                             <Button type="primary" block size="large">Finalizar Compra</Button>
                         </Link>
                     </div>
@@ -74,7 +74,7 @@ function CartWidget() {
         >
             <Badge count={totalQuantity} offset={[-2, 8]}>
                 <Button className="carrito-btn" type="text" style={{ padding: 0, height: 'auto' }}>
-                    <img src={carritoIcon} alt="Carrito" style={{ width: '35px' }} />
+                    <ShoppingCartOutlined className="carrito" />
                 </Button>
             </Badge>
         </Popover>

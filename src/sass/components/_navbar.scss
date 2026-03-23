@@ -63,3 +63,19 @@
 .nav-link:hover {
   color: #ccc; 
 }
+
+.anticon.carrito svg {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    fill: white;
+}
+
+
+@media (max-width: $breakpoint-sm) {
+    .nav-list {
+        flex-direction: row;
+        gap: 0.8rem;
+    }
+}
